@@ -1,0 +1,17 @@
+# depslib dependency file v1.0
+1446667744 source:c:\users\boris\desktop\estructura datos ii\filesystem\main.cpp
+	<iostream>
+
+1495391547 source:c:\users\boris\desktop\estructura datos ii\filesystem\src\archivo.cpp
+	"Archivo.h"
+
+1495391539 c:\users\boris\desktop\estructura datos ii\filesystem\include\archivo.h
+	<stdio.h>
+	<iostream>
+
+1495391152 source:c:\users\boris\desktop\estructura datos ii\filesystem\src\bloquearchivo.cpp
+	"BloqueArchivo.h"
+
+1495391416 c:\users\boris\desktop\estructura datos ii\filesystem\include\bloquearchivo.h
+	<stdio.h>
+
