@@ -7,7 +7,7 @@ class BloqueArchivo
     public:
         BloqueArchivo();
         BloqueArchivo * asignarSiguienteBloque();
-        virtual ~BloqueArchivo();
+
 
     protected:
 

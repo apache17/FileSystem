@@ -5,7 +5,7 @@ BloqueArchivo::BloqueArchivo()
     //ctor
 }
 
-BloqueArchivo::~BloqueArchivo()
+BloqueArchivo * BloqueArchivo::asignarSiguienteBloque()
 {
     //dtor
 }
