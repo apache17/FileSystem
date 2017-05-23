@@ -9,12 +9,13 @@
 
 class DiscoVirtual{
 public:
-    DiscoVirtual(Archivo * arch, const int tamArchivo, const int tamBloque);
+    DiscoVirtual(Archivo * arch, int tamArchivo, int tamBloque);
+    int tamArchivo,tamBloque;
     DiscoVirtual * crearDiscoVirtual(char * nombreArchivo);
     void formatear();
     void cargar();
 
-    BloqueFolder * listarArchivosEnRaiz();
+    list<Archivo*> * listarArchivosEnRaiz();
 
     Archivo * archivo;
     MasterBlock * mb;

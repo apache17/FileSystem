@@ -15,6 +15,7 @@ class MasterBlock{
 
         void cargar();
         void guardar();
+
     private:
         MasterBlock * charToMasterBlock(char * c);
         char * masterBlockToChar();
