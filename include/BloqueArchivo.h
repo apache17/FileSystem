@@ -7,7 +7,7 @@ class BloqueArchivo
     public:
         BloqueArchivo();
         BloqueArchivo * asignarSiguienteBloque();
-
+        void guardar();
 
     protected:
 

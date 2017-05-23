@@ -3,9 +3,10 @@
 
 #include <stdio.h>
 #include <list>
-#include "Archivo.hpp"
-#include "MasterBlock.hpp"
-#include "BloqueFolder.hpp"
+#include "Archivo.h"
+#include "MasterBlock.h"
+#include "BloqueFolder.h"
+#include "BloqueArchivo.h"
 
 class DiscoVirtual{
 public:

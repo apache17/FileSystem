@@ -7,5 +7,10 @@ BloqueArchivo::BloqueArchivo()
 
 BloqueArchivo * BloqueArchivo::asignarSiguienteBloque()
 {
-    //dtor
+
+}
+
+void BloqueArchivo::guardar()
+{
+
 }

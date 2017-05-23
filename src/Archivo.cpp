@@ -1,6 +1,7 @@
 #include "Archivo.h"
 
-Archivo::Archivo(string d,bool t){
+Archivo::Archivo(string d,char * n,bool t){
+    nombre = n;
     direccion = d;
     abierto = false;
     cerrado = true;

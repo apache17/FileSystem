@@ -7,11 +7,14 @@ using namespace std;
 
 class Archivo{
     public:
-        Archivo(string d,bool t);
+        Archivo(string d,char * n,bool t);
         string direccion;
+        char * nombre;
+        bool tipo;
+
         char * escritura;
         char * apuntador;
-        bool tipo;
+        bool abierto,cerrado;
 
         void abrir();
         void escribir(int pos, char * data, int longi);
@@ -19,9 +22,6 @@ class Archivo{
         void cerrar();
 
         int seek(int posDesde, int cuantosAMoverse);
-
-        bool abierto,cerrado;
-
 };
 
 #endif // ARCHIVO_H

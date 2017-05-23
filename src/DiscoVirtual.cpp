@@ -7,7 +7,7 @@ DiscoVirtual::DiscoVirtual(Archivo * arch, int tamArchivo, int tamBloque){
 }
 
 DiscoVirtual * DiscoVirtual::crearDiscoVirtual(char *nombreArchivo){
-    archivo = new Archivo(nombreArchivo,2);
+    archivo = new Archivo(nombreArchivo,"c:/",2);
     archivo->abrir();
     DiscoVirtual * disc = new DiscoVirtual(archivo,tamArchivo,tamBloque);
     disc->formatear();
@@ -19,7 +19,7 @@ void DiscoVirtual::formatear(){
     masterb->guardar();
     this->mb = masterb;
     for(int a = 0; a<mb->cantBloques; a++){
-        BloqueArchivo * bA = asignarSiguienteBloque();
+        BloqueArchivo * bA = bA->asignarSiguienteBloque();
         bA->guardar();
     }
     mb->sigDisponible = 1;
@@ -40,7 +40,7 @@ list<Archivo*> * DiscoVirtual::listarArchivosEnRaiz()
 
     int numeroDeBloque = mb->primero;
 
-    BloqueFolder * bf = new BloqueFolder("root",numeroDeBloque,this->archivo);
+    BloqueFolder * bf = new BloqueFolder("root",numeroDeBloque,this->archivo,mb->tamanoBloque);
     bf->cargar(); /*mismo que el cargar de aqui*/
 
     return &bf->entriesList;

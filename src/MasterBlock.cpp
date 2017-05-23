@@ -40,13 +40,13 @@ char * MasterBlock::masterBlockToChar(){
     char * data = new char[tamanoBloque];
 
     int pos = 0;
-    memcpy(&data[pos], &this->tamanoBloque, 4);
+    memcpy(&data[pos], &tamanoBloque, 4);
     pos+=4;
-    memcpy(&data[pos], &this->cantBloques, 4);
+    memcpy(&data[pos], &cantBloques, 4);
     pos+=4;
-    memcpy(&data[pos], &this->primero, 4);
+    memcpy(&data[pos], &primero, 4);
     pos+=4;
-    memcpy(&data[pos], &this->sigDisponible, 4);
+    memcpy(&data[pos], &sigDisponible, 4);
     pos+=4;
 
     return data;

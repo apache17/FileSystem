@@ -3,13 +3,17 @@
 
 #include <stdio.h>
 #include "Archivo.h"
+#include <iostream>
+#include <list>
+#include <string.h>
 
 class BloqueFolder{
 public:
-    BloqueFolder(string direccion, int numBloque, Archivo * arch);
+    BloqueFolder(string dir, int numB, Archivo * a,int tamanoB);
     string direccion;
     int numBloque;
     Archivo * archivo;
+    int tamanoBloque;
 
     list<Archivo*> entriesList;
 

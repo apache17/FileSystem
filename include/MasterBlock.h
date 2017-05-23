@@ -1,13 +1,17 @@
 #ifndef MASTERBLOCK_H
 #define MASTERBLOCK_H
+
+#include "BloqueArchivo.h"
+#include "Archivo.h"
+
 #include <stdio.h>
-#include "BloqueArchivo.hpp"
-#include "Archivo.hpp"
+#include <string.h>
+
 
 class MasterBlock{
     public:
         MasterBlock(Archivo * arch, int tam, int cantB, int first, int sigDisp);
-
+        Archivo * archivo;
         int tamanoBloque;
         int cantBloques;
         int primero;
