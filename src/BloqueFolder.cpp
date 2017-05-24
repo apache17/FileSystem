@@ -1,6 +1,6 @@
 #include "BloqueFolder.h"
 
-BloqueFolder::BloqueFolder(char * nombre, int numB, Archivo * a, int tamanoB)
+BloqueFolder::BloqueFolder()::Bloque(nombre,numB,a,tamanoB)
 {
     nombre = nombre;
     numBloque = numB;
@@ -29,24 +29,25 @@ void BloqueFolder::initFromChar(char * d)
     pos+=4;
 }
 
+
 char * BloqueFolder::getNombre()
 {
-    return nombre;
+    return Bloque::getNombre();
 }
 
 int BloqueFolder::getNumBloque()
 {
-    return numBloque;
+    return Bloque::getNumBloque();
 }
 
 int BloqueFolder::getTamanoBloque()
 {
-    return tamanoBloque;
+    return Bloque::getTamanoBloque();
 }
 
 Archivo * BloqueFolder::getArchivo()
 {
-    return archivo;
+    return Bloque::getArchivo();
 }
 
 

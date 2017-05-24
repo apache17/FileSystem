@@ -1,6 +1,6 @@
 #include "BloqueArchivo.h"
 
-BloqueArchivo::BloqueArchivo(char * nombre, int numB, Archivo * a, int tamanoB)
+BloqueArchivo::BloqueArchivo():Bloque(nombre,numB,a,tamanoB)
 {
     nombre = nombre;
     numBloque = numB;
@@ -26,20 +26,20 @@ void BloqueArchivo::initFromChar(char * d)
 
 char * BloqueArchivo::getNombre()
 {
-    return nombre;
+    return Bloque::getNombre();
 }
 
 int BloqueArchivo::getNumBloque()
 {
-    return numBloque;
+    return Bloque::getNumBloque();
 }
 
 int BloqueArchivo::getTamanoBloque()
 {
-    return tamanoBloque;
+    return Bloque::getTamanoBloque();
 }
 
 Archivo * BloqueArchivo::getArchivo()
 {
-    return archivo;
+    return Bloque::getArchivo();
 }

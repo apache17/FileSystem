@@ -7,8 +7,9 @@
 #include <list>
 #include <string.h>
 #include "FileEntry.h"
+#include "bloque.h"
 
-class BloqueFolder{
+class BloqueFolder:public Bloque{
 public:
     BloqueFolder(char * nombre, int numB, Archivo * a,int tamanoB);
 
