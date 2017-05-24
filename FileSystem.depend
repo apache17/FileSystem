@@ -2,12 +2,14 @@
 1446667744 source:c:\users\boris\desktop\estructura datos ii\filesystem\main.cpp
 	<iostream>
 
-1495576988 source:c:\users\boris\desktop\estructura datos ii\filesystem\src\archivo.cpp
+1495593730 source:c:\users\boris\desktop\estructura datos ii\filesystem\src\archivo.cpp
 	"Archivo.h"
 
-1495576988 c:\users\boris\desktop\estructura datos ii\filesystem\include\archivo.h
+1495593827 c:\users\boris\desktop\estructura datos ii\filesystem\include\archivo.h
+	<stdlib.h>
 	<stdio.h>
 	<iostream>
+	<string.h>
 
 1495579547 source:c:\users\boris\desktop\estructura datos ii\filesystem\src\bloquearchivo.cpp
 	"BloqueArchivo.h"
@@ -25,7 +27,7 @@
 	<list>
 	<string.h>
 
-1495579956 source:c:\users\boris\desktop\estructura datos ii\filesystem\src\discovirtual.cpp
+1495581191 source:c:\users\boris\desktop\estructura datos ii\filesystem\src\discovirtual.cpp
 	"DiscoVirtual.h"
 
 1495579471 c:\users\boris\desktop\estructura datos ii\filesystem\include\discovirtual.h

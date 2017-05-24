@@ -7,7 +7,7 @@ DiscoVirtual::DiscoVirtual(Archivo * arch, int tamArchivo, int tamBloque){
 }
 
 DiscoVirtual * DiscoVirtual::crearDiscoVirtual(char *nombreArchivo){
-    archivo = new Archivo(nombreArchivo,"c:/",2);
+    archivo = new Archivo(nombreArchivo,0,1000);
     archivo->abrir();
     DiscoVirtual * disc = new DiscoVirtual(archivo,tamArchivo,tamBloque);
     disc->formatear();

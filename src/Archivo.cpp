@@ -1,45 +1,46 @@
 #include "Archivo.h"
 
-Archivo::Archivo(string d,char * n,bool t){
-    nombre = n;
+Archivo::Archivo(char * d,bool t,long tamano){
     direccion = d;
     abierto = false;
-    cerrado = true;
     tipo = t;
-    escritura = new char[100];
-    apuntador = NULL;
+
+    if(strlen(direccion) > 0) {
+        file = fopen(direccion,"w");
+        fseek(file, tamano, SEEK_SET);
+        fputc( '\0', file);
+        fclose(file);
+    }
 }
 
 void Archivo::abrir(){
-    if(!abierto){
+    if(!abierto)
+    {
+        if(strlen(direccion)> 0)
+            file = fopen(direccion,"a+");
         abierto = true;
-        cerrado = false;
     }
 }
 
 void Archivo::cerrar(){
-    if(!cerrado){
-        cerrado = true;
+    if(abierto)
+    {
+        fclose(file);
         abierto = false;
     }
 }
 
-int Archivo::seek(int posDesde, int posHasta){
-    int a = 0;
-    for(a = posDesde; a<posHasta; a++){
-        apuntador = &escritura[a];
-    }
-    return a;
-}
 
 void Archivo::escribir(int pos, char *data, int longi){
-    if(!abierto){
-        cout<<"abrirlo"<<endl;
-    }
-    else{
-        int currentPos = seek(0, pos);
-        for(int b = currentPos; b<longi; b++){
-            escritura[b] = data[b];
+    if(!abierto)
+        cout<<"Archivo Cerrado"<<endl;
+
+    else
+    {
+        if(file != NULL)
+        {
+            fseek(file, pos, SEEK_SET );
+            fwrite( data, 1, longi, file);
         }
     }
 }
@@ -47,12 +48,13 @@ void Archivo::escribir(int pos, char *data, int longi){
 char * Archivo::leer(int pos, int longi){
     char * temp = new char[longi];
     if(!abierto)
-        cout<<"abrirlo"<<endl;
-    else{
-        int currentPos = seek(0, pos);
-        for(int a = currentPos; a<longi; a++){
-            temp[a] = escritura[a];
-        }
+        cout<<"Archivo Cerrado"<<endl;
+
+    if(file != NULL) {
+        char* data =  new char[longi];
+        fseek(file, pos, SEEK_SET );
+        fwrite(data,1,longi, file);
+        return data;
     }
     return temp;
 }

@@ -1,27 +1,26 @@
 #ifndef ARCHIVO_H
 #define ARCHIVO_H
 
+#include <stdlib.h>
 #include <stdio.h>
 #include <iostream>
+#include <string.h>
 using namespace std;
 
 class Archivo{
     public:
-        Archivo(string d,char * n,bool t);
-        string direccion;
-        char * nombre;
-        bool tipo;
+        Archivo(char* d,bool t,long tamano);
 
-        char * escritura;
-        char * apuntador;
-        bool abierto,cerrado;
+        char * direccion;
+        FILE* file;
+        bool tipo;
+        bool abierto;
+        long tamano;
 
         void abrir();
         void escribir(int pos, char * data, int longi);
         char * leer(int pos, int longi);
         void cerrar();
-
-        int seek(int posDesde, int cuantosAMoverse);
 };
 
 #endif // ARCHIVO_H
