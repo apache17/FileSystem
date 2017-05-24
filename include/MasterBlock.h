@@ -11,11 +11,12 @@
 class MasterBlock{
     public:
         MasterBlock(Archivo * arch, int tam, int cantB, int first, int sigDisp);
-        Archivo * archivo;
-        int tamanoBloque;
-        int cantBloques;
-        int primero;
-        int sigDisponible;
+        Archivo * getArchivo();
+        int getTamanoBloque();
+        int getCantBloques();
+        int getPrimerBloque();
+        int getSigDisponible();
+        void setSiguienteDisponible(int x);
 
         void cargar();
         void guardar();
@@ -24,6 +25,12 @@ class MasterBlock{
         MasterBlock * charToMasterBlock(char * c);
         char * masterBlockToChar();
         void initFromChar(char * d);
+        Archivo * archivo;
+        int tamanoBloque;
+        int cantBloques;
+        int primero;
+        int sigDisponible;
+
 
     //cantidad de bloques para un archivo = tamaño de archivo / cantidad de bloques
 };

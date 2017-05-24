@@ -11,7 +11,7 @@
 class DiscoVirtual{
 public:
     DiscoVirtual(Archivo * arch, int tamArchivo, int tamBloque);
-    int tamArchivo,tamBloque;
+
     DiscoVirtual * crearDiscoVirtual(char * nombreArchivo);
     BloqueArchivo * asignarSiguienteBloque();
     void formatear();
@@ -19,6 +19,13 @@ public:
 
     list<FileEntry*> * listarArchivosEnRaiz();
 
+    int getTamanoArchivo();
+    int getTamanoBloque();
+    Archivo * getArchivo();
+    MasterBlock * getMasterBlock();
+
+private:
+    int tamArchivo,tamBloque;
     Archivo * archivo;
     MasterBlock * mb;
 };

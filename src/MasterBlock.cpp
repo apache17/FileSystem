@@ -14,7 +14,8 @@ void MasterBlock::cargar(){
     initFromChar(data);
 }
 
-void MasterBlock::guardar(){
+void MasterBlock::guardar()
+{
 
 }
 
@@ -68,3 +69,34 @@ void MasterBlock::initFromChar(char * d){
     pos+=4;
 
 }
+
+Archivo * MasterBlock::getArchivo()
+{
+    return archivo;
+}
+
+int MasterBlock::getTamanoBloque()
+{
+    return tamanoBloque;
+}
+
+int MasterBlock::getCantBloques()
+{
+    return cantBloques;
+}
+
+int MasterBlock::getPrimerBloque()
+{
+    return primero;
+}
+
+int MasterBlock::getSigDisponible()
+{
+    return sigDisponible;
+}
+
+void MasterBlock::setSiguienteDisponible(int x)
+{
+    sigDisponible = x;
+}
+

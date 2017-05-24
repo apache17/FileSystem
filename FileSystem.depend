@@ -29,10 +29,10 @@
 	<string.h>
 	"FileEntry.h"
 
-1495599218 source:c:\users\boris\desktop\estructura datos ii\filesystem\src\discovirtual.cpp
+1495601109 source:c:\users\boris\desktop\estructura datos ii\filesystem\src\discovirtual.cpp
 	"DiscoVirtual.h"
 
-1495599710 c:\users\boris\desktop\estructura datos ii\filesystem\include\discovirtual.h
+1495601101 c:\users\boris\desktop\estructura datos ii\filesystem\include\discovirtual.h
 	<stdio.h>
 	<list>
 	"Archivo.h"
@@ -40,7 +40,7 @@
 	"BloqueFolder.h"
 	"BloqueArchivo.h"
 
-1495580649 c:\users\boris\desktop\estructura datos ii\filesystem\include\masterblock.h
+1495600691 c:\users\boris\desktop\estructura datos ii\filesystem\include\masterblock.h
 	"BloqueArchivo.h"
 	"Archivo.h"
 	<stdio.h>
@@ -49,10 +49,10 @@
 1495562092 source:c:\users\boris\desktop\estructura datos ii\filesystem\src\fileentry.cpp
 	"FileEntry.h"
 
-1495579670 c:\users\boris\desktop\estructura datos ii\filesystem\include\fileentry.h
+1495601147 c:\users\boris\desktop\estructura datos ii\filesystem\include\fileentry.h
 	<stdio.h>
 	<string.h>
 
-1495580604 source:c:\users\boris\desktop\estructura datos ii\filesystem\src\masterblock.cpp
+1495600858 source:c:\users\boris\desktop\estructura datos ii\filesystem\src\masterblock.cpp
 	"MasterBlock.h"
 
