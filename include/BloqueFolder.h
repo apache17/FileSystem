@@ -6,21 +6,29 @@
 #include <iostream>
 #include <list>
 #include <string.h>
+#include "FileEntry.h"
 
 class BloqueFolder{
 public:
-    BloqueFolder(string dir, int numB, Archivo * a,int tamanoB);
-    string direccion;
-    int numBloque;
-    Archivo * archivo;
-    int tamanoBloque;
+    BloqueFolder(char * nombre, int numB, Archivo * a,int tamanoB);
 
-    list<Archivo*> entriesList;
+    int getTamanoBloque();
+    int getNumBloque();
+    char * getNombre();
+    Archivo * getArchivo();
+    list<FileEntry*> * getEntriesList();
 
+    void agregarEntry(FileEntry * fe);
     void cargar();
 
 private:
     void initFromChar(char * d);
+
+    list<FileEntry*> * entriesList;
+    int tamanoBloque;
+    int numBloque;
+    char * nombre;
+    Archivo * archivo;
 };
 
 #endif // BLOQUEFOLDER_H
