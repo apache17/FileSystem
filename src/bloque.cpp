@@ -8,9 +8,14 @@ Bloque::Bloque(char * nombre, int numB, Archivo * a,int tamanoB)
     tamanoBloque = tamanoB;
 }
 
-Bloque::~Bloque()
+void Bloque::guardar()
 {
-    //dtor
+
+}
+
+void Bloque::initFromChar(char * d)
+{
+
 }
 
 char * Bloque::getNombre()

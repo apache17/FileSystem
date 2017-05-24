@@ -1,9 +1,9 @@
 #ifndef BLOQUEARCHIVO_H
 #define BLOQUEARCHIVO_H
 #include <stdio.h>
-#include "Archivo.h"
 #include "bloque.h"
-class BloqueArchivo::public Bloque
+
+class BloqueArchivo:public Bloque
 {
     public:
         BloqueArchivo(char * nombre, int numB, Archivo * a,int tamanoB);

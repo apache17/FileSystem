@@ -1,6 +1,6 @@
 #ifndef BLOQUE_H
 #define BLOQUE_H
-
+#include "Archivo.h"
 
 class Bloque
 {
@@ -13,7 +13,7 @@ class Bloque
         virtual void guardar();
 
     private:
-       virtual void initFromChar(char * d);
+        virtual void initFromChar(char * d);
         int tamanoBloque;
         int numBloque;
         char * nombre;

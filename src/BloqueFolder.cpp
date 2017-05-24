@@ -1,11 +1,8 @@
 #include "BloqueFolder.h"
 
-BloqueFolder::BloqueFolder()::Bloque(nombre,numB,a,tamanoB)
+BloqueFolder::BloqueFolder(char * nombre, int numB, Archivo * a,int tamanoB):Bloque(nombre,numB,a,tamanoB)
 {
-    nombre = nombre;
-    numBloque = numB;
-    archivo = a;
-    tamanoBloque = tamanoB;
+
 }
 
 list<FileEntry*> * BloqueFolder::getEntriesList()

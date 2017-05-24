@@ -11,23 +11,23 @@
 	<iostream>
 	<string.h>
 
-1495599920 source:c:\users\boris\desktop\estructura datos ii\filesystem\src\bloquearchivo.cpp
+1495660962 source:c:\users\boris\desktop\estructura datos ii\filesystem\src\bloquearchivo.cpp
 	"BloqueArchivo.h"
 
-1495599920 c:\users\boris\desktop\estructura datos ii\filesystem\include\bloquearchivo.h
+1495661101 c:\users\boris\desktop\estructura datos ii\filesystem\include\bloquearchivo.h
 	<stdio.h>
-	"Archivo.h"
+	"bloque.h"
 
-1495599941 source:c:\users\boris\desktop\estructura datos ii\filesystem\src\bloquefolder.cpp
+1495661115 source:c:\users\boris\desktop\estructura datos ii\filesystem\src\bloquefolder.cpp
 	"BloqueFolder.h"
 
-1495599941 c:\users\boris\desktop\estructura datos ii\filesystem\include\bloquefolder.h
+1495661077 c:\users\boris\desktop\estructura datos ii\filesystem\include\bloquefolder.h
 	<stdio.h>
-	"Archivo.h"
 	<iostream>
 	<list>
 	<string.h>
 	"FileEntry.h"
+	"bloque.h"
 
 1495601109 source:c:\users\boris\desktop\estructura datos ii\filesystem\src\discovirtual.cpp
 	"DiscoVirtual.h"
@@ -55,4 +55,10 @@
 
 1495600858 source:c:\users\boris\desktop\estructura datos ii\filesystem\src\masterblock.cpp
 	"MasterBlock.h"
+
+1495661316 c:\users\boris\desktop\estructura datos ii\filesystem\include\bloque.h
+	"Archivo.h"
+
+1495661085 source:c:\users\boris\desktop\estructura datos ii\filesystem\src\bloque.cpp
+	"bloque.h"
 

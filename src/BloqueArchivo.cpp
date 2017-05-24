@@ -1,11 +1,8 @@
 #include "BloqueArchivo.h"
 
-BloqueArchivo::BloqueArchivo():Bloque(nombre,numB,a,tamanoB)
+BloqueArchivo::BloqueArchivo(char * nombre, int numB, Archivo * a,int tamanoB):Bloque(nombre,numB,a,tamanoB)
 {
-    nombre = nombre;
-    numBloque = numB;
-    archivo = a;
-    tamanoBloque = tamanoB;
+
 }
 
 void BloqueArchivo::guardar()

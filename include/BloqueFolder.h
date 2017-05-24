@@ -2,7 +2,6 @@
 #define BLOQUEFOLDER_H
 
 #include <stdio.h>
-#include "Archivo.h"
 #include <iostream>
 #include <list>
 #include <string.h>
