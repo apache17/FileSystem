@@ -10,25 +10,25 @@
 
 class BloqueFolder:public Bloque{
 public:
-    BloqueFolder(char * nombre, int numB, Archivo * a,int tamanoB);
+    BloqueFolder(char * nombre, int numB, Archivo * a,int tamanoB,bool disp);
 
     int getTamanoBloque();
     int getNumBloque();
     char * getNombre();
-    Archivo * getArchivo();
-    list<FileEntry*> * getEntriesList();
-
-    void agregarEntry(FileEntry * fe);
+    list<Archivo*> * getListaArchivo();
+    bool getDisponible();
+    void agregarArchivo(Archivo * arch);
     void cargar();
 
 private:
     void initFromChar(char * d);
 
-    list<FileEntry*> * entriesList;
+    list<Archivo*> * listaArchivos;
     int tamanoBloque;
     int numBloque;
+    bool disponible;
     char * nombre;
-    Archivo * archivo;
+
 };
 
 #endif // BLOQUEFOLDER_H

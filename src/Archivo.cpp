@@ -1,7 +1,8 @@
 #include "Archivo.h"
 
-Archivo::Archivo(char * d,bool t,long tamano){
+Archivo::Archivo(char * d,char * n,bool t,long tamano){
     direccion = d;
+    nombre = n;
     abierto = false;
     tipo = t;
 
@@ -45,6 +46,13 @@ void Archivo::escribir(int pos, char *data, int longi){
     }
 }
 
+int Archivo::getSize()
+{
+    return sizeof(file);
+}
+
+
+
 char * Archivo::leer(int pos, int longi){
     char * temp = new char[longi];
     if(!abierto)
@@ -53,7 +61,7 @@ char * Archivo::leer(int pos, int longi){
     if(file != NULL) {
         char* data =  new char[longi];
         fseek(file, pos, SEEK_SET );
-        fwrite(data,1,longi, file);
+        fread(data,1,longi, file);
         return data;
     }
     return temp;

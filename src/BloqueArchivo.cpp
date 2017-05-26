@@ -1,13 +1,18 @@
 #include "BloqueArchivo.h"
 
-BloqueArchivo::BloqueArchivo(char * nombre, int numB, Archivo * a,int tamanoB):Bloque(nombre,numB,a,tamanoB)
+BloqueArchivo::BloqueArchivo(char * nombre, int numB, Archivo * a,int tamanoB, bool disp):Bloque(nombre,numB,tamanoB,disp)
 {
-
+    archivo = a;
 }
 
 void BloqueArchivo::guardar()
 {
 
+}
+
+bool BloqueArchivo::getDisponible()
+{
+    return Bloque::getDisponible();
 }
 
 void BloqueArchivo::initFromChar(char * d)
@@ -38,5 +43,5 @@ int BloqueArchivo::getTamanoBloque()
 
 Archivo * BloqueArchivo::getArchivo()
 {
-    return Bloque::getArchivo();
+    return archivo;
 }

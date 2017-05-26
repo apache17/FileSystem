@@ -13,18 +13,20 @@ public:
     DiscoVirtual(Archivo * arch, int tamArchivo, int tamBloque);
 
     DiscoVirtual * crearDiscoVirtual(char * nombreArchivo);
-    BloqueArchivo * asignarSiguienteBloque();
+    Bloque * asignarSiguienteBloque(int numeroBloque);
     void formatear();
     void cargar();
 
-    list<FileEntry*> * listarArchivosEnRaiz();
+    list<Archivo*> * listarArchivosEnRaiz();
 
     int getTamanoArchivo();
     int getTamanoBloque();
     Archivo * getArchivo();
     MasterBlock * getMasterBlock();
+    list<Bloque*> getListaBloques();
 
 private:
+    list<Bloque*> listaBloques;
     int tamArchivo,tamBloque;
     Archivo * archivo;
     MasterBlock * mb;

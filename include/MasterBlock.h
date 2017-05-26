@@ -3,10 +3,8 @@
 
 #include "BloqueArchivo.h"
 #include "Archivo.h"
-
 #include <stdio.h>
 #include <string.h>
-
 
 class MasterBlock{
     public:
@@ -17,7 +15,6 @@ class MasterBlock{
         int getPrimerBloque();
         int getSigDisponible();
         void setSiguienteDisponible(int x);
-
         void cargar();
         void guardar();
 
@@ -30,9 +27,6 @@ class MasterBlock{
         int cantBloques;
         int primero;
         int sigDisponible;
-
-
-    //cantidad de bloques para un archivo = tamaño de archivo / cantidad de bloques
 };
 
 #endif // MASTERBLOCK_H

@@ -1,13 +1,23 @@
 #include "BloqueFolder.h"
 
-BloqueFolder::BloqueFolder(char * nombre, int numB, Archivo * a,int tamanoB):Bloque(nombre,numB,a,tamanoB)
+BloqueFolder::BloqueFolder(char * nombre, int numB, Archivo * a,int tamanoB,bool disp):Bloque(nombre,numB,tamanoB,disp)
 {
 
 }
 
-list<FileEntry*> * BloqueFolder::getEntriesList()
+bool BloqueFolder::getDisponible()
 {
-    return entriesList;
+    return Bloque::getDisponible();
+}
+
+list<Archivo*> * BloqueFolder::getListaArchivo()
+{
+    return listaArchivos;
+}
+
+void BloqueFolder::agregarArchivo(Archivo* arch)
+{
+    listaArchivos->push_back(arch);
 }
 
 void BloqueFolder::cargar()
@@ -40,11 +50,6 @@ int BloqueFolder::getNumBloque()
 int BloqueFolder::getTamanoBloque()
 {
     return Bloque::getTamanoBloque();
-}
-
-Archivo * BloqueFolder::getArchivo()
-{
-    return Bloque::getArchivo();
 }
 
 

@@ -1,11 +1,11 @@
 #include "bloque.h"
 
-Bloque::Bloque(char * nombre, int numB, Archivo * a,int tamanoB)
+Bloque::Bloque(char * nombre, int numB,int tamanoB,bool disp)
 {
-   nombre = nombre;
+    nombre = nombre;
     numBloque = numB;
-    archivo = a;
     tamanoBloque = tamanoB;
+    disponible = disp;
 }
 
 void Bloque::guardar()
@@ -16,6 +16,11 @@ void Bloque::guardar()
 void Bloque::initFromChar(char * d)
 {
 
+}
+
+bool Bloque::getDisponible()
+{
+    return disponible;
 }
 
 char * Bloque::getNombre()
@@ -33,7 +38,4 @@ int Bloque::getTamanoBloque()
     return tamanoBloque;
 }
 
-Archivo * Bloque::getArchivo()
-{
-    return archivo;
-}
+

@@ -9,9 +9,9 @@ using namespace std;
 
 class Archivo{
     public:
-        Archivo(char* d,bool t,long tamano);
-
+        Archivo(char* d,char * n,bool t,long tamano);
         char * direccion;
+        char * nombre;
         FILE* file;
         bool tipo;
         bool abierto;
@@ -21,6 +21,7 @@ class Archivo{
         void escribir(int pos, char * data, int longi);
         char * leer(int pos, int longi);
         void cerrar();
+        int getSize();
 };
 
 #endif // ARCHIVO_H
