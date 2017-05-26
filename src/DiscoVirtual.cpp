@@ -2,8 +2,8 @@
 
 DiscoVirtual::DiscoVirtual(Archivo * arch, int tamArchivo, int tamBloque){
     archivo = arch;
-    tamArchivo = tamArchivo;
-    tamBloque = tamBloque;
+    tamArchivo = 1000;
+    tamBloque = 100;
 }
 
 DiscoVirtual * DiscoVirtual::crearDiscoVirtual(char *nombreArchivo){
@@ -15,7 +15,7 @@ DiscoVirtual * DiscoVirtual::crearDiscoVirtual(char *nombreArchivo){
 }
 
 void DiscoVirtual::formatear(){
-    mb = new MasterBlock(archivo,tamBloque,(tamArchivo/tamBloque),1,2);
+    mb = new MasterBlock(archivo,tamBloque,(tamArchivo/tamBloque),-1,1);
     mb->guardar();
 
     for(int a = 0; a<mb->getCantBloques(); a++)
@@ -32,7 +32,7 @@ Bloque * DiscoVirtual::asignarSiguienteBloque(int numeroBloque)
     string str = "Bloque";
     char *cstr = new char[str.length() + 1];
     strcpy(cstr, str.c_str());
-    Bloque * bloque = new Bloque(cstr,numeroBloque,mb->getTamanoBloque(),0);
+    Bloque * bloque = new Bloque(cstr,numeroBloque,mb->getTamanoBloque(),true);
     listaBloques.push_back(bloque);
     return bloque;
 }

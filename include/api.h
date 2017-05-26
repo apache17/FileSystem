@@ -10,10 +10,10 @@ class API
 {
     public:
         API();
-        DiscoVirtual *disco;
-        MasterBlock * mb;
+
+
         Bloque * get(list<Bloque*>,int _i);
-        Bloque *  addBloque(Archivo * arch, string tipo);
+        Bloque *  addBloque(Archivo * arch, string tipo, DiscoVirtual * dv);
 
     protected:
 
