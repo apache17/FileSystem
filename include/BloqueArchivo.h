@@ -2,6 +2,7 @@
 #define BLOQUEARCHIVO_H
 #include <stdio.h>
 #include "bloque.h"
+#include "FileEntry.h"
 
 class BloqueArchivo:public Bloque
 {
@@ -12,7 +13,9 @@ class BloqueArchivo:public Bloque
         char * getNombre();
         bool getDisponible();
         Archivo * getArchivo();
-        void guardar();
+        void setFileEntry(char* nombre, int firstBlock, int lastBlock, int isFolder, int size);
+
+
 
     private:
         void initFromChar(char * d);
@@ -21,6 +24,7 @@ class BloqueArchivo:public Bloque
         char * nombre;
         bool disponible;
         Archivo * archivo;
+        FileEntry *fe;
 };
 
 #endif // BLOQUEARCHIVO_H

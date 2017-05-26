@@ -18,23 +18,25 @@ Bloque * API::addBloque(Archivo *arch, string tipo)
     if(tipo == "Archivo")
     {
         int pos = mb->getSigDisponible();
-        list<Bloque*> lista = disco->getListaBloques();
-        Bloque * ba = get(lista,pos-1);
+        //list<Bloque*> lista = disco->getListaBloques();
+        /*Bloque * ba = get(lista,pos-1);
+        int size = arch->getSize()/4096;
 
-        ba = new BloqueArchivo(arch->nombre,pos,arch,arch->getSize(),1);
-        mb->setSiguienteDisponible(pos+1);
-        return ba;
-    }
-
-    else if(tipo == "Carpeta")
-    {
-        int pos = mb->getSigDisponible();
-        list<Bloque*> lista = disco->getListaBloques();
-        Bloque * bf = get(lista,pos-1);
-
-        bf = new BloqueFolder(arch->nombre,pos,arch,arch->getSize(),1);
-        mb->setSiguienteDisponible(pos+1);
-        return bf;
+        if(size<=1){
+            ba = new BloqueArchivo(arch->nombre,pos,arch,arch->getSize(),1);
+            mb->setSiguienteDisponible(pos+1);
+            ba->setFileEntry(arch->nombre,pos,size,false,arch->getSize());
+            return ba;
+        }
+        else if(size>1)
+        {
+            if(arch->getSize()%4096>0)
+                size++;
+            ba = new BloqueArchivo(arch->nombre,pos,arch,arch->getSize(),1);
+            mb->setSiguienteDisponible(pos+size);
+            ba->setFileEntry(arch->nombre,pos,size,false,arch->getSize());
+            return ba;
+        }*/
     }
     return NULL;
 

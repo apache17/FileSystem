@@ -19,6 +19,7 @@ public:
     bool getDisponible();
     void agregarArchivo(Archivo * arch);
     void cargar();
+    void setFileEntry(char* nombre, int firstBlock, int lastBlock, int isFolder, long size);
 
 private:
     void initFromChar(char * d);

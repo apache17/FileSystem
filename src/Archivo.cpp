@@ -41,7 +41,7 @@ void Archivo::escribir(int pos, char *data, int longi){
         if(file != NULL)
         {
             fseek(file, pos, SEEK_SET );
-            fwrite( data, 1, longi, file);
+            fwrite(data, 1, longi, file);
         }
     }
 }
@@ -51,7 +51,7 @@ int Archivo::getSize()
     return sizeof(file);
 }
 
-
+//preguntar si se puede hacer bloque folder
 
 char * Archivo::leer(int pos, int longi){
     char * temp = new char[longi];

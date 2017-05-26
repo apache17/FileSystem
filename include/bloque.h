@@ -9,8 +9,8 @@ class Bloque
         virtual int getTamanoBloque();
         virtual int getNumBloque();
         virtual char * getNombre();
-        virtual void guardar();
         virtual bool getDisponible();
+        virtual void setFileEntry(char* nombre, int firstBlock, int lastBlock, int isFolder, int size);
 
     private:
         virtual void initFromChar(char * d);
