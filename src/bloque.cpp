@@ -8,11 +8,6 @@ Bloque::Bloque(char * nombre, int numB,int tamanoB,bool disp)
     disponible = disp;
 }
 
-void Bloque::setFileEntry(char* nombre, int firstBlock, int lastBlock, int isFolder, int size)
-{
-
-}
-
 void Bloque::initFromChar(char * d)
 {
 

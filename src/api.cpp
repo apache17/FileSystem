@@ -19,20 +19,22 @@ Bloque * API::addBloque(Archivo *arch, string tipo, DiscoVirtual * dv)
     {
         int pos = dv->getMasterBlock()->getSigDisponible();
         list<Bloque*> lista = dv->getListaBloques();
-        Bloque * ba = get(lista,pos-1);
+        Bloque * b = get(lista,pos-1);
         int size = arch->getSize()/4096;
 
         if(size<=1){
-            ba = new BloqueArchivo(arch->nombre,pos,arch,arch->getSize(),false);
+            b = new BloqueArchivo(arch->direccion,pos,arch,arch->getSize(),false);
             dv->getMasterBlock()->setSiguienteDisponible(pos+1);
-            //ba->setFileEntry(arch->nombre,pos,size,false,arch->getSize());
+            BloqueArchivo * ba = dynamic_cast<BloqueArchivo*>(b);
+            ba->setFileEntry(arch->direccion,pos,size,false,arch->getSize());
             return ba;
         }
         else if(size>1)
         {
             if(arch->getSize()%4096>0)
                 size++;
-            ba = new BloqueArchivo(arch->nombre,pos,arch,arch->getSize(),1);
+            b = new BloqueArchivo(arch->direccion,pos,arch,arch->getSize(),1);
+            BloqueArchivo * ba = dynamic_cast<BloqueArchivo*>(b);
             dv->getMasterBlock()->setSiguienteDisponible(pos+size);
             //ba->setFileEntry(arch->nombre,pos,size,false,arch->getSize());
             return ba;

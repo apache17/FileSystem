@@ -1,25 +1,31 @@
 #include "Archivo.h"
 
-Archivo::Archivo(char * d,char * n,bool t,long tamano){
+Archivo::Archivo(char * d)
+{
     direccion = d;
-    nombre = n;
     abierto = false;
-    tipo = t;
-
-    if(strlen(direccion) > 0) {
-        file = fopen(direccion,"w");
-        fseek(file, tamano, SEEK_SET);
-        fputc( '\0', file);
-        fclose(file);
-    }
 }
 
-void Archivo::abrir(){
+int Archivo::getSize()
+{
+    abrir();
+    fseek (file , 0 , SEEK_END);
+    tamano = ftell (file);
+    rewind (file);
+    return tamano;
+}
+
+FILE * Archivo::abrir()
+{
     if(!abierto)
     {
         if(strlen(direccion)> 0)
+        {
             file = fopen(direccion,"a+");
-        abierto = true;
+            abierto = true;
+            rewind (file);
+            return file;
+        }
     }
 }
 
@@ -31,39 +37,22 @@ void Archivo::cerrar(){
     }
 }
 
-
-void Archivo::escribir(int pos, char *data, int longi){
-    if(!abierto)
-        cout<<"Archivo Cerrado"<<endl;
-
-    else
-    {
-        if(file != NULL)
-        {
-            fseek(file, pos, SEEK_SET );
-            fwrite(data, 1, longi, file);
-        }
-    }
-}
-
-int Archivo::getSize()
+void Archivo::escribir(char *data)
 {
-    return sizeof(file);
+   abrir();
+   if(file != NULL)
+        fwrite(data,sizeof(char), strlen(data), file);
 }
 
-//preguntar si se puede hacer bloque folder
-
-char * Archivo::leer(int pos, int longi){
-    char * temp = new char[longi];
-    if(!abierto)
-        cout<<"Archivo Cerrado"<<endl;
-
-    if(file != NULL) {
-        char* data =  new char[longi];
-        fseek(file, pos, SEEK_SET );
-        fread(data,1,longi, file);
-        return data;
-    }
-    return temp;
+char * Archivo::leer(int pos, int longi)
+{
+    long lSize = longi - pos;
+    char * buffer = new char[lSize];
+    size_t result;
+    fopen(direccion,"r+");
+    result = fread (buffer,pos,lSize,file);
+    if (result != lSize) {fputs ("Reading error",stderr); exit (3);}
+    cerrar();
+    return buffer;
 }
 

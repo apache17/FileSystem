@@ -10,14 +10,14 @@
 
 class DiscoVirtual{
 public:
-    DiscoVirtual(Archivo * arch, int tamArchivo, int tamBloque);
-
-    DiscoVirtual * crearDiscoVirtual(char * nombreArchivo);
+    DiscoVirtual(Archivo * arch,int tamArc,int tamBlo);
     Bloque * asignarSiguienteBloque(int numeroBloque);
-    void formatear();
-    void cargar();
+    void formatear(char *nombreArchivo);
 
-    list<Archivo*> * listarArchivosEnRaiz();
+    void cargar();
+    void guardar();
+
+    list<FileEntry*> * listarArchivosEnRaiz();
 
     int getTamanoArchivo();
     int getTamanoBloque();

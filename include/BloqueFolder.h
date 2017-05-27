@@ -15,16 +15,16 @@ public:
     int getTamanoBloque();
     int getNumBloque();
     char * getNombre();
-    list<Archivo*> * getListaArchivo();
+    list<FileEntry*> * getListaEntries();
     bool getDisponible();
-    void agregarArchivo(Archivo * arch);
+    void agregarEntry(FileEntry * fe);
     void cargar();
     void setFileEntry(char* nombre, int firstBlock, int lastBlock, int isFolder, long size);
 
 private:
     void initFromChar(char * d);
 
-    list<Archivo*> * listaArchivos;
+    list<FileEntry*> * listaEntries;
     int tamanoBloque;
     int numBloque;
     bool disponible;

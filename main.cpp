@@ -9,19 +9,22 @@ using namespace std;
 int main()
 {
     char * hola = {"Boris"};
-    Archivo * arch = new Archivo(hola,hola,true,5000);
-    DiscoVirtual * dv = new DiscoVirtual(arch,4000000,4000);
-    dv->formatear();
+    char * hola3 = {"Boris2"};
+    char * hola2 = {"Boris Roldan Garcia Pacheco"};
+    Archivo * archivo = new Archivo(hola);
+    archivo->escribir(hola2);
 
-    Archivo * arch2 = new Archivo(hola,hola,true,5000);
-    char * hola1 = {"Boris Roldan Garcia Pacheco"};
-    arch2->abrir();
-    arch2->escribir(0,hola1,strlen(hola1));
+    Archivo * archivo2 = new Archivo(hola3);
+
+    DiscoVirtual * dv = new DiscoVirtual(archivo2,4194304,4096);
+    dv->formatear(hola3);
 
     API * api = new API();
-    api->addBloque(arch2,"Archivo",dv);
+    api->addBloque(archivo,"Archivo",dv);
 
     Bloque * b = api->get(dv->getListaBloques(),0);
     BloqueArchivo * ba = reinterpret_cast<BloqueArchivo*>(b);
-        return 0;
+
+
+    return 0;
 }

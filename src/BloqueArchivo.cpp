@@ -5,13 +5,14 @@ BloqueArchivo::BloqueArchivo(char * nombre, int numB, Archivo * a,int tamanoB, b
     archivo = a;
 }
 
-void BloqueArchivo::setFileEntry(char* nombre, int firstBlock, int lastBlock, int isFolder, int size)
+void BloqueArchivo::setFileEntry(char* n, int fB, int lB, int isF, int s)
 {
-    fe->nombre = nombre;
-    fe->firstBlock = firstBlock;
-    fe->lastBlock = lastBlock;
-    fe->isFolder = isFolder;
-    fe->size = size;
+    fe = new FileEntry(n,fB,lB,isF,s);
+}
+
+FileEntry * BloqueArchivo::getFileEntry()
+{
+    return fe;
 }
 
 bool BloqueArchivo::getDisponible()

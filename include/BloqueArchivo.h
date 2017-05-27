@@ -13,7 +13,8 @@ class BloqueArchivo:public Bloque
         char * getNombre();
         bool getDisponible();
         Archivo * getArchivo();
-        void setFileEntry(char* nombre, int firstBlock, int lastBlock, int isFolder, int size);
+        FileEntry * getFileEntry();
+        void setFileEntry(char* n, int fB, int lB, int isF, int s);
 
 
 

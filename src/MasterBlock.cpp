@@ -16,6 +16,19 @@ void MasterBlock::cargar(){
 
 void MasterBlock::guardar()
 {
+    char * data = new char[tamanoBloque];
+
+    int pos = 0;
+    memcpy(&data[pos], &tamanoBloque, 4);
+    pos+=4;
+    memcpy(&data[pos], &cantBloques, 4);
+    pos+=4;
+    memcpy(&data[pos], &primero, 4);
+    pos+=4;
+    memcpy(&data[pos], &sigDisponible, 4);
+    pos+=4;
+
+    archivo->escribir(data);
 
 }
 

@@ -10,14 +10,14 @@ bool BloqueFolder::getDisponible()
     return Bloque::getDisponible();
 }
 
-list<Archivo*> * BloqueFolder::getListaArchivo()
+list<FileEntry*> * BloqueFolder::getListaEntries()
 {
-    return listaArchivos;
+    return listaEntries;
 }
 
-void BloqueFolder::agregarArchivo(Archivo* arch)
+void BloqueFolder::agregarEntry(FileEntry* fe)
 {
-    listaArchivos->push_back(arch);
+    listaEntries->push_back(fe);
 }
 
 void BloqueFolder::cargar()

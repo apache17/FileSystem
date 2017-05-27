@@ -1,20 +1,14 @@
 #include "DiscoVirtual.h"
 
-DiscoVirtual::DiscoVirtual(Archivo * arch, int tamArchivo, int tamBloque){
+DiscoVirtual::DiscoVirtual(Archivo * arch,int tamArc,int tamBlo){
     archivo = arch;
-    tamArchivo = 1000;
-    tamBloque = 100;
+    tamArchivo = tamArc;
+    tamBloque = tamBlo;
 }
 
-DiscoVirtual * DiscoVirtual::crearDiscoVirtual(char *nombreArchivo){
-    archivo = new Archivo(nombreArchivo,"C:/",0,tamBloque);
-    archivo->abrir();
-    DiscoVirtual * disc = new DiscoVirtual(archivo,tamArchivo,tamBloque);
-    disc->formatear();
-    return disc;
-}
-
-void DiscoVirtual::formatear(){
+void DiscoVirtual::formatear(char *nombreArchivo)
+{
+    Archivo * a = new Archivo(nombreArchivo);
     mb = new MasterBlock(archivo,tamBloque,(tamArchivo/tamBloque),-1,1);
     mb->guardar();
 
@@ -43,17 +37,17 @@ void DiscoVirtual::cargar(){
     this->mb->cargar();
 }
 
-list<Archivo*> * DiscoVirtual::listarArchivosEnRaiz()
+list<FileEntry*> * DiscoVirtual::listarArchivosEnRaiz()
 {
     if(mb->getSigDisponible() == 1)
-        return new list<Archivo*>;
+        return new list<FileEntry*>;
 
     int numeroDeBloque = mb->getPrimerBloque();
 
     BloqueFolder * bf = new BloqueFolder("root",numeroDeBloque,this->archivo,mb->getTamanoBloque(),0);
     bf->cargar();
 
-    return bf->getListaArchivo();
+    return bf->getListaEntries();
 }
 
 int DiscoVirtual::getTamanoArchivo()
@@ -79,4 +73,16 @@ MasterBlock * DiscoVirtual::getMasterBlock()
 list<Bloque*> DiscoVirtual::getListaBloques()
 {
     return listaBloques;
+}
+
+void DiscoVirtual::guardar()
+{
+    char * data = new char[8];
+
+    int pos = 0;
+    memcpy(&data[pos], &tamArchivo, 4);
+    pos+=4;
+    memcpy(&data[pos], &tamBloque, 4);
+    pos+=4;
+    archivo->escribir(data);
 }
