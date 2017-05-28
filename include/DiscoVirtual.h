@@ -1,6 +1,6 @@
 #ifndef DISCOVIRTUAL_H
 #define DISCOVIRTUAL_H
-
+#include <vector>
 #include <stdio.h>
 #include <list>
 #include "Archivo.h"
@@ -17,16 +17,17 @@ public:
     void cargar();
     void guardar();
 
-    list<FileEntry*> * listarArchivosEnRaiz();
+    vector<FileEntry*> * listarArchivosEnRaiz();
 
     int getTamanoArchivo();
     int getTamanoBloque();
     Archivo * getArchivo();
     MasterBlock * getMasterBlock();
-    list<Bloque*> getListaBloques();
-
+    vector<Bloque*> getListaBloques();
+    vector<BloqueArchivo*> listaBloqueArchivo;
+    vector<BloqueArchivo*> listaBloqueFolder;
 private:
-    list<Bloque*> listaBloques;
+    vector<Bloque*> listaBloques;
     int tamArchivo,tamBloque;
     Archivo * archivo;
     MasterBlock * mb;

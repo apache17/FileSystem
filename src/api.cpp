@@ -4,12 +4,8 @@ API::API(){
 
 }
 
-Bloque * API::get(list<Bloque*> lista, int _i){
-    list<Bloque*>::iterator it = lista.begin();
-    for(int i=0; i<_i; i++){
-        ++it;
-    }
-    return *it;
+Bloque * API::get(vector<Bloque*> lista, int i){
+    return lista[i];
 }
 
 
@@ -19,8 +15,8 @@ Bloque * API::addBloque(Archivo *arch, string tipo, DiscoVirtual * dv)
     if(tipo == "Archivo")
     {
         int pos = dv->getMasterBlock()->getSigDisponible();
-        list<Bloque*> lista = dv->getListaBloques();
-        Bloque * b = get(lista,pos);
+        vector<Bloque*> lista = dv->getListaBloques();
+        Bloque * b = lista[pos];
         int size = arch->getSize()/4096;
 
         if(size<=1){
@@ -28,6 +24,7 @@ Bloque * API::addBloque(Archivo *arch, string tipo, DiscoVirtual * dv)
             dv->getMasterBlock()->setSiguienteDisponible(pos+1);
             BloqueArchivo * ba = dynamic_cast<BloqueArchivo*>(b);
             ba->setFileEntry(arch->direccion,pos,arch->getSize(),false,arch->getSize());
+            dv->listaBloqueArchivo.push_back(ba);
             return ba;
         }
         else if(size>1)

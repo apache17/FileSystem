@@ -10,7 +10,7 @@ bool BloqueFolder::getDisponible()
     return Bloque::getDisponible();
 }
 
-list<FileEntry*> * BloqueFolder::getListaEntries()
+vector<FileEntry*> * BloqueFolder::getListaEntries()
 {
     return listaEntries;
 }

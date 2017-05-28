@@ -37,10 +37,10 @@ void DiscoVirtual::cargar(){
     this->mb->cargar();
 }
 
-list<FileEntry*> * DiscoVirtual::listarArchivosEnRaiz()
+vector<FileEntry*> * DiscoVirtual::listarArchivosEnRaiz()
 {
     if(mb->getSigDisponible() == 1)
-        return new list<FileEntry*>;
+        return new vector<FileEntry*>;
 
     int numeroDeBloque = mb->getPrimerBloque();
 
@@ -70,7 +70,7 @@ MasterBlock * DiscoVirtual::getMasterBlock()
     return mb;
 }
 
-list<Bloque*> DiscoVirtual::getListaBloques()
+vector<Bloque*> DiscoVirtual::getListaBloques()
 {
     return listaBloques;
 }

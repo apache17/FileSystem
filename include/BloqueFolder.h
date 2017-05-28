@@ -1,6 +1,6 @@
 #ifndef BLOQUEFOLDER_H
 #define BLOQUEFOLDER_H
-
+#include <vector>
 #include <stdio.h>
 #include <iostream>
 #include <list>
@@ -15,7 +15,7 @@ public:
     int getTamanoBloque();
     int getNumBloque();
     char * getNombre();
-    list<FileEntry*> * getListaEntries();
+    vector<FileEntry*> * getListaEntries();
     bool getDisponible();
     void agregarEntry(FileEntry * fe);
     void cargar();
@@ -24,7 +24,7 @@ public:
 private:
     void initFromChar(char * d);
 
-    list<FileEntry*> * listaEntries;
+    vector<FileEntry*> * listaEntries;
     int tamanoBloque;
     int numBloque;
     bool disponible;

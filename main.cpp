@@ -20,16 +20,19 @@ int main()
     dv->formatear(hola3);
 
     API * api = new API();
+
     Bloque * b = api->addBloque(archivo,"Archivo",dv);
     Bloque * b2 = api->addBloque(archivo2,"Archivo",dv);
     Bloque * b3 = api->addBloque(archivo2,"Archivo",dv);
-    BloqueArchivo * ba = reinterpret_cast<BloqueArchivo*>(b);
-    BloqueArchivo * ba2 = reinterpret_cast<BloqueArchivo*>(b2);
+
+    BloqueArchivo * ba = dynamic_cast<BloqueArchivo*>(b);
+    BloqueArchivo * ba2 = dynamic_cast<BloqueArchivo*>(b2);
 
     cout<<ba->getFileEntry()->getSize()<<endl;
     cout<<ba2->getFileEntry()->getSize()<<endl;
 
-
-
+    vector<BloqueArchivo*> lista = dv->listaBloqueArchivo;
+    BloqueArchivo * b4= lista[0];
+    cout<<b4->getFileEntry()->getSize()<<endl;
     return 0;
 }
