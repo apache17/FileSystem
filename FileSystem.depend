@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1495951398 source:c:\users\boris\desktop\estructura datos ii\filesystem\main.cpp
+1495991939 source:c:\users\boris\desktop\estructura datos ii\filesystem\main.cpp
 	<iostream>
 	"api.h"
 	"DiscoVirtual.h"
@@ -16,7 +16,7 @@
 	<iostream>
 	<string.h>
 
-1495948921 source:c:\users\boris\desktop\estructura datos ii\filesystem\src\bloquearchivo.cpp
+1495991555 source:c:\users\boris\desktop\estructura datos ii\filesystem\src\bloquearchivo.cpp
 	"BloqueArchivo.h"
 
 1495931198 c:\users\boris\desktop\estructura datos ii\filesystem\include\bloquearchivo.h
@@ -24,7 +24,7 @@
 	"bloque.h"
 	"FileEntry.h"
 
-1495950705 source:c:\users\boris\desktop\estructura datos ii\filesystem\src\bloquefolder.cpp
+1495991986 source:c:\users\boris\desktop\estructura datos ii\filesystem\src\bloquefolder.cpp
 	"BloqueFolder.h"
 
 1495950613 c:\users\boris\desktop\estructura datos ii\filesystem\include\bloquefolder.h
@@ -54,10 +54,10 @@
 	<stdio.h>
 	<string.h>
 
-1495951339 source:c:\users\boris\desktop\estructura datos ii\filesystem\src\fileentry.cpp
+1495991574 source:c:\users\boris\desktop\estructura datos ii\filesystem\src\fileentry.cpp
 	"FileEntry.h"
 
-1495948684 c:\users\boris\desktop\estructura datos ii\filesystem\include\fileentry.h
+1495991542 c:\users\boris\desktop\estructura datos ii\filesystem\include\fileentry.h
 	<stdio.h>
 	<string.h>
 	<iostream>
@@ -71,10 +71,10 @@
 1495912621 source:c:\users\boris\desktop\estructura datos ii\filesystem\src\bloque.cpp
 	"bloque.h"
 
-1495951670 source:c:\users\boris\desktop\estructura datos ii\filesystem\src\api.cpp
+1495991975 source:c:\users\boris\desktop\estructura datos ii\filesystem\src\api.cpp
 	"api.h"
 
-1495940216 c:\users\boris\desktop\estructura datos ii\filesystem\include\api.h
+1495952533 c:\users\boris\desktop\estructura datos ii\filesystem\include\api.h
 	"MasterBlock.h"
 	"BloqueArchivo.h"
 	"BloqueFolder.h"

@@ -2,7 +2,7 @@
 
 BloqueArchivo::BloqueArchivo(char * nombre, int numB, Archivo * a,int tamanoB, bool disp):Bloque(nombre,numB,tamanoB,disp)
 {
-    fe = new FileEntry("FileEntry",0,0,false,0);
+    fe = new FileEntry();
     archivo = a;
 }
 

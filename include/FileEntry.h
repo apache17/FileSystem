@@ -8,7 +8,7 @@ using namespace std;
 class FileEntry
 {
     public:
-        FileEntry( char * nombre, int firstBlock, int lastBlock, bool isFolder, int size );
+        FileEntry();
 
         void imprimirNombre();
         int getPosInicio();

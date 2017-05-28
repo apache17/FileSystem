@@ -1,11 +1,11 @@
 #include "FileEntry.h"
 
-FileEntry::FileEntry(char *nombre, int firstBlock, int lastBlock, bool isFolder, int size) {
-    this->nombre = nombre;
-    this->firstBlock = firstBlock;
-    this->lastBlock = lastBlock;
-    this->isFolder = isFolder;
-    this->size = size;
+FileEntry::FileEntry() {
+    nombre = {"a"};
+    firstBlock = 0;
+    lastBlock = 0;
+    isFolder = false;
+    size = 0;
     posFinal = 0;
     posInicio = 0;
 }

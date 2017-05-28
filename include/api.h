@@ -10,10 +10,9 @@ class API
 {
     public:
         API();
-
-
         Bloque * get(vector<Bloque*> lista,int i);
         Bloque *  addBloque(Archivo * arch, string tipo, DiscoVirtual * dv);
+        void addData(BloqueFolder *bf,char * data);
         void dir(DiscoVirtual * dv);
 
     protected:
