@@ -13,6 +13,7 @@ void BloqueArchivo::setFileEntry(char* n, int fB, int lB, bool isF, int s)
     fe->setLastBlock(lB);
     fe->setNombre(n);
     fe->setSize(s);
+
 }
 
 void BloqueArchivo::imprimirContenido()

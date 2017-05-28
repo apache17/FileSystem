@@ -17,7 +17,7 @@ public:
     void cargar();
     void guardar();
 
-    vector<FileEntry*> * listarArchivosEnRaiz();
+    vector<FileEntry*> listarArchivosEnRaiz();
 
     int getTamanoArchivo();
     int getTamanoBloque();
@@ -25,7 +25,7 @@ public:
     MasterBlock * getMasterBlock();
     vector<Bloque*> getListaBloques();
     vector<BloqueArchivo*> listaBloqueArchivo;
-    vector<BloqueArchivo*> listaBloqueFolder;
+    vector<BloqueFolder*> listaBloqueFolder;
 private:
     vector<Bloque*> listaBloques;
     int tamArchivo,tamBloque;

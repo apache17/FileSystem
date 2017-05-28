@@ -15,16 +15,16 @@ public:
     int getTamanoBloque();
     int getNumBloque();
     char * getNombre();
-    vector<FileEntry*> * getListaEntries();
+    vector<FileEntry*> getListaEntries();
     bool getDisponible();
-    void agregarEntry(FileEntry * fe);
     void cargar();
-    void setFileEntry(char* nombre, int firstBlock, int lastBlock, int isFolder, long size);
+    void agregarFileEntry(char* n, int fB, int lB, bool isF, int s,int pI,int pF);
+
 
 private:
     void initFromChar(char * d);
 
-    vector<FileEntry*> * listaEntries;
+    vector<FileEntry*> listaEntries;
     int tamanoBloque;
     int numBloque;
     bool disponible;

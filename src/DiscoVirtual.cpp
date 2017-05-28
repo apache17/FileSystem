@@ -37,7 +37,7 @@ void DiscoVirtual::cargar(){
     this->mb->cargar();
 }
 
-vector<FileEntry*> * DiscoVirtual::listarArchivosEnRaiz()
+/*vector<FileEntry*> DiscoVirtual::listarArchivosEnRaiz()
 {
     if(mb->getSigDisponible() == 1)
         return new vector<FileEntry*>;
@@ -49,7 +49,7 @@ vector<FileEntry*> * DiscoVirtual::listarArchivosEnRaiz()
 
     return bf->getListaEntries();
 }
-
+*/
 int DiscoVirtual::getTamanoArchivo()
 {
     return tamArchivo;

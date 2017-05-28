@@ -22,8 +22,8 @@ int main()
     API * api = new API();
 
     Bloque * b = api->addBloque(archivo,"Archivo",dv);
-    Bloque * b2 = api->addBloque(archivo2,"Archivo",dv);
-    Bloque * b3 = api->addBloque(archivo2,"Archivo",dv);
+    // Bloque * b2 = api->addBloque(archivo2,"Folder",dv);
+    // Bloque * b3 = api->addBloque(archivo2,"Folder",dv);
 
     api->dir(dv);
     return 0;

@@ -6,12 +6,21 @@ FileEntry::FileEntry(char *nombre, int firstBlock, int lastBlock, bool isFolder,
     this->lastBlock = lastBlock;
     this->isFolder = isFolder;
     this->size = size;
+    posFinal = 0;
+    posInicio = 0;
 }
 void FileEntry::imprimirEntry()
 {
     imprimirNombre();
+    cout<<"Posicion de Inicio : ";
+    cout<<getPosInicio()<<endl;
+    cout<<"Posicion Final : ";
+    cout<<getPosFinal()<<endl;
+    cout<<"Primer Bloque : ";
     cout<<getFirstBLock()<<endl;
+    cout<<"Ultimo Bloque : ";
     cout<<getLastBlock()<<endl;
+    cout<<"Tamano : ";
     cout<<getSize()<<endl;
     esFolder();
 }
@@ -27,6 +36,26 @@ void FileEntry::imprimirEntry()
  {
      firstBlock = fB;
  }
+
+void FileEntry::setPosInicio(int pI)
+{
+     posInicio = pI;
+}
+
+void FileEntry::setPosFinal(int pF)
+{
+     posFinal = pF;
+}
+
+int FileEntry::getPosFinal()
+{
+    return posFinal;
+}
+
+int FileEntry::getPosInicio()
+{
+    return posInicio;
+}
 
 void FileEntry::setLastBlock(int lB)
 {
@@ -62,10 +91,12 @@ void FileEntry::esFolder()
 {
     if(isFolder)
         cout<<"Es un Folder"<<endl;
-    cout<<"Es un Archivo"<<endl;
+    else
+        cout<<"Es un Archivo"<<endl;
 }
 
 int FileEntry::getSize()
 {
     return size;
 }
+

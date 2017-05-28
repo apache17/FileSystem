@@ -5,20 +5,30 @@ BloqueFolder::BloqueFolder(char * nombre, int numB, Archivo * a,int tamanoB,bool
 
 }
 
+void BloqueFolder::agregarFileEntry(char* n, int fB, int lB, bool isF, int s,int pI,int pF)
+{
+    FileEntry * fe;
+    fe->setFirstBlock(fB);
+    fe->setIsFolder(isF);
+    fe->setLastBlock(lB);
+    fe->setNombre(n);
+    fe->setSize(s);
+    fe->setPosInicio(pI);
+    fe->setPosFinal(pF);
+
+    listaEntries.push_back(fe);
+}
+
 bool BloqueFolder::getDisponible()
 {
     return Bloque::getDisponible();
 }
 
-vector<FileEntry*> * BloqueFolder::getListaEntries()
+vector<FileEntry*> BloqueFolder::getListaEntries()
 {
     return listaEntries;
 }
 
-void BloqueFolder::agregarEntry(FileEntry* fe)
-{
-    listaEntries->push_back(fe);
-}
 
 void BloqueFolder::cargar()
 {
