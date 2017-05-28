@@ -2,21 +2,32 @@
 #define FILEENTRY_H
 #include <stdio.h>
 #include <string.h>
-
+#include<iostream>
+using namespace std;
 
 class FileEntry
 {
     public:
-        FileEntry( char* nombre, int firstBlock, int lastBlock, int isFolder, int size );
+        FileEntry( char * nombre, int firstBlock, int lastBlock, bool isFolder, int size );
+
+        void imprimirNombre();
+        int getFirstBLock();
+        int getLastBlock();
+        void esFolder();
+        int getSize();
+
+        void setFirstBlock(int fB);
+        void setLastBlock(int lB);
+        void setNombre(char * n);
+        void setSize(int s);
+        void setIsFolder(bool iF);
+
+    private:
         char* nombre;
         int firstBlock;
         int lastBlock;
-        int isFolder;
+        bool isFolder;
         int size;
-
-    protected:
-
-    private:
 };
 
 #endif // FILEENTRY_H

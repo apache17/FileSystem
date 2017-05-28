@@ -14,6 +14,7 @@ class API
 
         Bloque * get(list<Bloque*>,int _i);
         Bloque *  addBloque(Archivo * arch, string tipo, DiscoVirtual * dv);
+        void dir(DiscoVirtual * dv);
 
     protected:
 

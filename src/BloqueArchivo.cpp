@@ -2,12 +2,25 @@
 
 BloqueArchivo::BloqueArchivo(char * nombre, int numB, Archivo * a,int tamanoB, bool disp):Bloque(nombre,numB,tamanoB,disp)
 {
+    fe = new FileEntry("FileEntry",0,0,false,0);
     archivo = a;
 }
 
-void BloqueArchivo::setFileEntry(char* n, int fB, int lB, int isF, int s)
+void BloqueArchivo::setFileEntry(char* n, int fB, int lB, bool isF, int s)
 {
-    fe = new FileEntry(n,fB,lB,isF,s);
+    fe->setFirstBlock(fB);
+    fe->setIsFolder(isF);
+    fe->setLastBlock(lB);
+    fe->setNombre(n);
+    fe->setSize(s);
+}
+
+void BloqueArchivo::imprimirContenido()
+{
+    char * data = archivo->leer(1,archivo->getSize());
+    for(int x = 0; x<strlen(data);x++)
+        cout<<data[x];
+    cout<<""<<endl;
 }
 
 FileEntry * BloqueArchivo::getFileEntry()

@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include "bloque.h"
 #include "FileEntry.h"
+using namespace std;
 
 class BloqueArchivo:public Bloque
 {
@@ -14,7 +15,8 @@ class BloqueArchivo:public Bloque
         bool getDisponible();
         Archivo * getArchivo();
         FileEntry * getFileEntry();
-        void setFileEntry(char* n, int fB, int lB, int isF, int s);
+        void setFileEntry(char* n, int fB, int lB, bool isF, int s);
+        void imprimirContenido();
 
 
 

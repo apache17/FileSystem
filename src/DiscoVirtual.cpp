@@ -33,7 +33,7 @@ Bloque * DiscoVirtual::asignarSiguienteBloque(int numeroBloque)
 
 void DiscoVirtual::cargar(){
     archivo->abrir();
-    mb = new MasterBlock(this->archivo,tamBloque,(tamArchivo/tamBloque),-1,1);
+    mb = new MasterBlock(this->archivo,tamBloque,(tamArchivo/tamBloque),0,1);
     this->mb->cargar();
 }
 
