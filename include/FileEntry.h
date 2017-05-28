@@ -22,6 +22,7 @@ class FileEntry
         void setSize(int s);
         void setIsFolder(bool iF);
 
+        void imprimirEntry();
     private:
         char* nombre;
         int firstBlock;

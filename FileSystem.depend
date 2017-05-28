@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1495940201 source:c:\users\boris\desktop\estructura datos ii\filesystem\main.cpp
+1495941191 source:c:\users\boris\desktop\estructura datos ii\filesystem\main.cpp
 	<iostream>
 	"api.h"
 	"DiscoVirtual.h"
@@ -54,10 +54,10 @@
 	<stdio.h>
 	<string.h>
 
-1495924022 source:c:\users\boris\desktop\estructura datos ii\filesystem\src\fileentry.cpp
+1495941191 source:c:\users\boris\desktop\estructura datos ii\filesystem\src\fileentry.cpp
 	"FileEntry.h"
 
-1495923980 c:\users\boris\desktop\estructura datos ii\filesystem\include\fileentry.h
+1495941191 c:\users\boris\desktop\estructura datos ii\filesystem\include\fileentry.h
 	<stdio.h>
 	<string.h>
 	<iostream>
@@ -71,7 +71,7 @@
 1495912621 source:c:\users\boris\desktop\estructura datos ii\filesystem\src\bloque.cpp
 	"bloque.h"
 
-1495940267 source:c:\users\boris\desktop\estructura datos ii\filesystem\src\api.cpp
+1495941450 source:c:\users\boris\desktop\estructura datos ii\filesystem\src\api.cpp
 	"api.h"
 
 1495940216 c:\users\boris\desktop\estructura datos ii\filesystem\include\api.h

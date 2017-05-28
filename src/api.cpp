@@ -35,6 +35,7 @@ Bloque * API::addBloque(Archivo *arch, string tipo, DiscoVirtual * dv)
             BloqueArchivo * ba = dynamic_cast<BloqueArchivo*>(b);
             dv->getMasterBlock()->setSiguienteDisponible(pos+size);
             ba->setFileEntry(arch->direccion,pos,arch->getSize(),false,arch->getSize());
+            dv->listaBloqueArchivo.push_back(ba);
             return ba;
         }
     }
@@ -44,5 +45,12 @@ Bloque * API::addBloque(Archivo *arch, string tipo, DiscoVirtual * dv)
 
 void API::dir(DiscoVirtual * dv)
 {
+    vector<BloqueArchivo*> lista = dv->listaBloqueArchivo;
 
+    for(int x = 0; x<lista.size();x++)
+    {
+        BloqueArchivo * ba = lista[x];
+        ba->getFileEntry()->imprimirEntry();
+        cout<<"--------------------------------------"<<endl;
+    }
 }

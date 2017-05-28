@@ -7,7 +7,14 @@ FileEntry::FileEntry(char *nombre, int firstBlock, int lastBlock, bool isFolder,
     this->isFolder = isFolder;
     this->size = size;
 }
-
+void FileEntry::imprimirEntry()
+{
+    imprimirNombre();
+    cout<<getFirstBLock()<<endl;
+    cout<<getLastBlock()<<endl;
+    cout<<getSize()<<endl;
+    esFolder();
+}
 
  void FileEntry::imprimirNombre()
  {

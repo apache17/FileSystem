@@ -25,14 +25,6 @@ int main()
     Bloque * b2 = api->addBloque(archivo2,"Archivo",dv);
     Bloque * b3 = api->addBloque(archivo2,"Archivo",dv);
 
-    BloqueArchivo * ba = dynamic_cast<BloqueArchivo*>(b);
-    BloqueArchivo * ba2 = dynamic_cast<BloqueArchivo*>(b2);
-
-    cout<<ba->getFileEntry()->getSize()<<endl;
-    cout<<ba2->getFileEntry()->getSize()<<endl;
-
-    vector<BloqueArchivo*> lista = dv->listaBloqueArchivo;
-    BloqueArchivo * b4= lista[0];
-    cout<<b4->getFileEntry()->getSize()<<endl;
+    api->dir(dv);
     return 0;
 }
