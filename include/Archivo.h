@@ -9,14 +9,15 @@ using namespace std;
 
 class Archivo{
     public:
-        Archivo(char* d);
+        Archivo(char* d,long size);
         char * direccion;
         FILE* file;
         bool abierto;
-        long tamano;
+
+        long size;
 
         FILE * abrir();
-        void escribir(char * data);
+        void escribir(char * data, int pos, int longitud);
         char * leer(int pos, int longi);
         void cerrar();
         int getSize();

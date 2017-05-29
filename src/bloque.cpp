@@ -1,21 +1,16 @@
 #include "bloque.h"
 
-Bloque::Bloque(char * nombre, int numB,int tamanoB,bool disp)
+Bloque::Bloque(char * nombre, int numB,int tamanoB)
 {
     nombre = nombre;
     numBloque = numB;
     tamanoBloque = tamanoB;
-    disponible = disp;
+
 }
 
 void Bloque::initFromChar(char * d)
 {
 
-}
-
-bool Bloque::getDisponible()
-{
-    return disponible;
 }
 
 char * Bloque::getNombre()

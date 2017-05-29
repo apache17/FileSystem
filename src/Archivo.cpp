@@ -1,18 +1,25 @@
 #include "Archivo.h"
 
-Archivo::Archivo(char * d)
+Archivo::Archivo(char * d,long size)
 {
     direccion = d;
     abierto = false;
+    size = size;
+
+    if(strlen(this->direccion)> 0) {
+        file = fopen(this->direccion,"w");
+        fputc('\0',file);
+        fclose(file);
+    }
 }
 
 int Archivo::getSize()
 {
     abrir();
     fseek (file , 0 , SEEK_END);
-    tamano = ftell (file);
+    size = ftell (file);
     rewind (file);
-    return tamano;
+    return size;
 }
 
 FILE * Archivo::abrir()
@@ -37,11 +44,13 @@ void Archivo::cerrar(){
     }
 }
 
-void Archivo::escribir(char *data)
+void Archivo::escribir(char *data, int pos, int longitud)
 {
    abrir();
-   if(file != NULL)
-        fwrite(data,sizeof(char), strlen(data), file);
+   if(file != NULL){
+        fseek( this->file, pos, SEEK_SET );
+        fwrite(data,sizeof(char), longitud, file);
+   }
 }
 
 char * Archivo::leer(int pos, int longi)

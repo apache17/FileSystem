@@ -11,7 +11,7 @@ int main()
     API * api = new API();
 
     char * hola = {"Disco Virtual"};
-    Archivo * archivo = new Archivo(hola);
+    Archivo * archivo = new Archivo(hola,4194304);
     DiscoVirtual * dv = new DiscoVirtual(archivo,4194304,4096);
     dv->formatear(hola);
 
@@ -19,41 +19,12 @@ int main()
     char * hola2 = {"Roldan"};
     char * hola3 = {"Garcia"};
     char * hola4 = {"Pacheco"};
-    char * hola5 = {"Monique"};
-    char * hola6 = {"Adriana"};
-    char * hola7 = {"Test"};
-    char * hola8 = {"Test2"};
-    char * hola9 = {"Test3"};
 
-    Archivo * archivo1 = new Archivo(hola1);
-    Archivo * archivo2 = new Archivo(hola2);
-    Archivo * archivo3 = new Archivo(hola3);
-    Archivo * archivo4 = new Archivo(hola4);
-    Archivo * archivo5 = new Archivo(hola5);
-    Archivo * archivo6 = new Archivo(hola6);
-
-    /*archivo1->escribir(hola1);
-    archivo2->escribir(hola2);
-    archivo3->escribir(hola3);
-    archivo4->escribir(hola4);
-    archivo5->escribir(hola5);
-    archivo6->escribir(hola6);*/
-
-    api->addBloque(archivo1,"Folder",dv);
-    api->addBloque(archivo2,"Folder",dv);
-    api->addBloque(archivo3,"Archivo",dv);
-    api->addBloque(archivo4,"Archivo",dv);
-    api->addBloque(archivo5,"Archivo",dv);
-    api->addBloque(archivo6,"Folder",dv);
-
-    vector<BloqueFolder*> lista = dv->listaBloqueFolder;
-    BloqueFolder * bf = lista[0];
-
-    api->addData(dv,bf,hola7,hola7);
-    api->addData(dv,bf,hola8,hola8);
-    api->addData(dv,bf,hola9,hola9);
+    archivo->escribir(hola,2000,strlen(hola));
+    api->addBloque("Archivo",dv,hola2,hola1);
+    api->addBloque("Archivo",dv,hola2,hola1);
     api->dir(dv);
 
-
+    //char * n = dv->getArchivo()->leer(4096,6);
     return 0;
 }

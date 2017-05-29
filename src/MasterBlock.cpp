@@ -1,7 +1,7 @@
 #include "MasterBlock.h"
 
-MasterBlock::MasterBlock(Archivo * arch, const int tam, int cantB, int first,int sigDisp){
-    archivo = arch;
+MasterBlock::MasterBlock(Archivo * archivo, const int tam, int cantB, int first,int sigDisp){
+    archivo = archivo;
     tamanoBloque = tam;
     cantBloques = cantB;
     primero = first;
@@ -28,7 +28,7 @@ void MasterBlock::guardar()
     memcpy(&data[pos], &sigDisponible, 4);
     pos+=4;
 
-    archivo->escribir(data);
+    //archivo->escribir(data);
 
 }
 
@@ -81,11 +81,6 @@ void MasterBlock::initFromChar(char * d){
     memcpy(&this->sigDisponible, &d[pos], 4);
     pos+=4;
 
-}
-
-Archivo * MasterBlock::getArchivo()
-{
-    return archivo;
 }
 
 int MasterBlock::getTamanoBloque()

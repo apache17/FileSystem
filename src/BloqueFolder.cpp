@@ -1,14 +1,8 @@
 #include "BloqueFolder.h"
 
-BloqueFolder::BloqueFolder(char * nombre, int numB, Archivo * a,int tamanoB,bool disp):Bloque(nombre,numB,tamanoB,disp)
+BloqueFolder::BloqueFolder(char * nombre, int numB,int tamanoB):Bloque(nombre,numB,tamanoB)
 {
     espacioUtilizado = 0;
-    archivo = a;
-}
-
-Archivo * BloqueFolder::getArchivo()
-{
-    return archivo;
 }
 
 void BloqueFolder::setNombre(char * n)
@@ -46,10 +40,6 @@ void BloqueFolder::imprimirN()
             cout<<nombre[x];
         cout<<""<<endl;
     }
-}
-bool BloqueFolder::getDisponible()
-{
-    return Bloque::getDisponible();
 }
 
 vector<FileEntry*> BloqueFolder::getListaEntries()

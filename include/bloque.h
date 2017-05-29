@@ -5,18 +5,16 @@
 class Bloque
 {
     public:
-        Bloque(char * nombre, int numB,int tamanoB,bool disp );
+        Bloque(char * nombre, int numB,int tamanoB);
         virtual int getTamanoBloque();
         virtual int getNumBloque();
         virtual char * getNombre();
-        virtual bool getDisponible();
 
     private:
         virtual void initFromChar(char * d);
         int tamanoBloque;
         int numBloque;
         char * nombre;
-        bool disponible;
 };
 
 #endif // BLOQUE_H

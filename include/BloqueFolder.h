@@ -10,7 +10,7 @@
 
 class BloqueFolder:public Bloque{
 public:
-    BloqueFolder(char * nombre, int numB, Archivo * a,int tamanoB,bool disp);
+    BloqueFolder(char * nombre, int numB,int tamanoB);
 
     int getTamanoBloque();
     void imprimirN();
@@ -19,9 +19,7 @@ public:
     void setEspacioUtilizado(int eU);
     char * getNombre();
     void setNombre(char * n);
-    Archivo * getArchivo();
     vector<FileEntry*> getListaEntries();
-    bool getDisponible();
     void cargar();
     void agregarFileEntry(FileEntry * fe,char* n, int fB, int lB, bool isF, int s,int pI,int pF);
 
@@ -33,10 +31,7 @@ private:
     int tamanoBloque;
     int numBloque;
     int espacioUtilizado;
-    bool disponible;
     char * nombre;
-    Archivo * archivo;
-
 };
 
 #endif // BLOQUEFOLDER_H
