@@ -8,6 +8,7 @@ Archivo::Archivo(char * d,long size)
 
     if(strlen(this->direccion)> 0) {
         file = fopen(this->direccion,"w");
+        fseek(file,size,SEEK_SET);
         fputc('\0',file);
         fclose(file);
     }
@@ -34,6 +35,7 @@ FILE * Archivo::abrir()
             return file;
         }
     }
+    return NULL;
 }
 
 void Archivo::cerrar(){
@@ -44,23 +46,23 @@ void Archivo::cerrar(){
     }
 }
 
-void Archivo::escribir(char *data, int pos, int longitud)
+int Archivo::escribir(char *data, int pos, int longitud)
 {
+   int x;
    abrir();
    if(file != NULL){
         fseek( this->file, pos, SEEK_SET );
-        fwrite(data,sizeof(char), longitud, file);
+        x = fwrite(data,sizeof(char), longitud, file);
    }
+   return x;
 }
 
 char * Archivo::leer(int pos, int longi)
 {
-    long lSize = longi - pos;
-    char * buffer = new char[lSize];
-    size_t result;
-    fopen(direccion,"r+");
-    result = fread (buffer,pos,lSize,file);
-    if (result != lSize) {fputs ("Reading error",stderr); exit (3);}
+    file = fopen(direccion,"r");
+    char * buffer = new char[longi];
+    int currentPos = fseek(file,longi,SEEK_CUR);
+    fread(buffer,currentPos,longi,file);
     cerrar();
     return buffer;
 }

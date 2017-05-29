@@ -8,20 +8,21 @@ Bloque * API::get(vector<Bloque*> lista, int i){
     return lista[i];
 }
 
-void API::addData(DiscoVirtual * dv,BloqueFolder * bf,char * data,char * nombre)
+void API::addData(DiscoVirtual * dv,char * nombre,BloqueFolder * bf,char * data)
 {
-    /*Archivo * archivo = dv->getArchivo();
+    Archivo * archivo = dv->getArchivo();
     vector<FileEntry*> lista = bf->getListaEntries();
     int x = lista.size();
     FileEntry * fe = lista[x-1];
     FileEntry * feN = new FileEntry();
-    bf->setEspacioUtilizado(strlen(data));
-    archivo->escribir(data);
 
-    if((bf->getEspacioUtilizado()+ strlen(data)) < 4096)
+    int y = bf->getEspacioUtilizado()%4096;
+
+    if((y%4096)<4096)
     {
-        dv->getArchivo()->escribir(data,4096*pos,strlen(data));
+        archivo->escribir(data,bf->getEspacioUtilizado(),strlen(data));
         bf->agregarFileEntry(feN,nombre,fe->getFirstBLock(),fe->getLastBlock(),false,strlen(data),fe->getPosFinal()+1,fe->getPosFinal()+strlen(data));
+        bf->setEspacioUtilizado(strlen(data));
     }
     else
     {
@@ -40,10 +41,10 @@ void API::addData(DiscoVirtual * dv,BloqueFolder * bf,char * data,char * nombre)
             bf->agregarFileEntry(feN,nombre,pos,pos+size-1,false,strlen(data),fe->getPosFinal()+1,fe->getPosFinal()+strlen(data));
 
         }
-    }*/
+    }
 }
 
-Bloque * API::addBloque(string tipo, DiscoVirtual * dv,char * data,char * nombre)
+Bloque * API::addBloque(DiscoVirtual * dv,char * nombre, string tipo,char * data)
 {
     Archivo * archivo = dv->getArchivo();
     if(tipo == "Archivo")

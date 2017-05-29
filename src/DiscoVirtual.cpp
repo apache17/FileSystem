@@ -9,14 +9,16 @@ DiscoVirtual::DiscoVirtual(Archivo * arch,int tamArc,int tamBlo){
 void DiscoVirtual::formatear(char *nombreArchivo)
 {
 
-    mb = new MasterBlock(getArchivo(),tamBloque,(tamArchivo/tamBloque),-1,1);
+    mb = new MasterBlock(tamBloque,(tamArchivo/tamBloque),-1,1);
     mb->guardar();
 
     for(int a = 0; a<mb->getCantBloques(); a++)
         asignarSiguienteBloque(a);
 
     mb->setSiguienteDisponible(1);
-    mb->guardar();
+    char * mB = mb->masterBlockToChar();
+    archivo->escribir(mB,1,strlen(mB));
+
 }
 
 Bloque * DiscoVirtual::asignarSiguienteBloque(int numeroBloque)
@@ -31,7 +33,7 @@ Bloque * DiscoVirtual::asignarSiguienteBloque(int numeroBloque)
 
 void DiscoVirtual::cargar(){
     archivo->abrir();
-    mb = new MasterBlock(getArchivo(),tamBloque,(tamArchivo/tamBloque),0,1);
+    mb = new MasterBlock(tamBloque,(tamArchivo/tamBloque),0,1);
     this->mb->cargar();
 }
 
@@ -77,10 +79,10 @@ void DiscoVirtual::guardar()
 {
     char * data = new char[8];
 
-    /*int pos = 0;
+    int pos = 0;
     memcpy(&data[pos], &tamArchivo, 4);
     pos+=4;
     memcpy(&data[pos], &tamBloque, 4);
     pos+=4;
-    archivo->escribir(data);*/
+    //archivo->escribir(data);
 }

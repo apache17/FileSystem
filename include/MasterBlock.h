@@ -8,7 +8,7 @@
 
 class MasterBlock{
     public:
-        MasterBlock(Archivo * archivo,int tam, int cantB, int first, int sigDisp);
+        MasterBlock(int tam, int cantB, int first, int sigDisp);
         int getTamanoBloque();
         int getCantBloques();
         int getPrimerBloque();
@@ -16,10 +16,10 @@ class MasterBlock{
         void setSiguienteDisponible(int x);
         void cargar();
         void guardar();
-        Archivo * archivo;
+        char * masterBlockToChar();
     private:
         MasterBlock * charToMasterBlock(char * c);
-        char * masterBlockToChar();
+
         void initFromChar(char * d);
         int tamanoBloque;
         int cantBloques;

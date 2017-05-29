@@ -11,8 +11,8 @@ class API
     public:
         API();
         Bloque * get(vector<Bloque*> lista,int i);
-        Bloque *  addBloque(string tipo, DiscoVirtual * dv,char * data,char * nombre);
-        void addData(DiscoVirtual * dv,BloqueFolder *bf,char * data,char * nombre);
+        Bloque *  addBloque(DiscoVirtual * dv,char * nombre, string tipo,char * data);
+        void addData(DiscoVirtual * dv,char * data,BloqueFolder *bf,char * nombre);
         void dir(DiscoVirtual * dv);
 
     protected:
