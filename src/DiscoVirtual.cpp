@@ -9,14 +9,12 @@ DiscoVirtual::DiscoVirtual(Archivo * arch,int tamArc,int tamBlo){
 void DiscoVirtual::formatear(char *nombreArchivo)
 {
     Archivo * a = new Archivo(nombreArchivo);
-    mb = new MasterBlock(archivo,tamBloque,(tamArchivo/tamBloque),-1,1);
+    mb = new MasterBlock(a,tamBloque,(tamArchivo/tamBloque),-1,1);
     mb->guardar();
 
     for(int a = 0; a<mb->getCantBloques(); a++)
-    {
-        Bloque * bloque = asignarSiguienteBloque(a);
+        asignarSiguienteBloque(a);
 
-    }
     mb->setSiguienteDisponible(1);
     mb->guardar();
 }
