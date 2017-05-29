@@ -22,6 +22,8 @@ int main()
     char * hola5 = {"Monique"};
     char * hola6 = {"Adriana"};
     char * hola7 = {"Test"};
+    char * hola8 = {"Test2"};
+    char * hola9 = {"Test3"};
 
     Archivo * archivo1 = new Archivo(hola1);
     Archivo * archivo2 = new Archivo(hola2);
@@ -37,7 +39,7 @@ int main()
     archivo5->escribir(hola5);
     archivo6->escribir(hola6);*/
 
-    Bloque * b = api->addBloque(archivo1,"Folder",dv);
+    api->addBloque(archivo1,"Folder",dv);
     api->addBloque(archivo2,"Folder",dv);
     api->addBloque(archivo3,"Archivo",dv);
     api->addBloque(archivo4,"Archivo",dv);
@@ -47,11 +49,9 @@ int main()
     vector<BloqueFolder*> lista = dv->listaBloqueFolder;
     BloqueFolder * bf = lista[0];
 
-    api->addData(bf,hola7,hola7);
-
-
-
-
+    api->addData(dv,bf,hola7,hola7);
+    api->addData(dv,bf,hola8,hola8);
+    api->addData(dv,bf,hola9,hola9);
     api->dir(dv);
 
 

@@ -23,7 +23,7 @@ public:
     vector<FileEntry*> getListaEntries();
     bool getDisponible();
     void cargar();
-    void agregarFileEntry(char* n, int fB, int lB, bool isF, int s,int pI,int pF);
+    void agregarFileEntry(FileEntry * fe,char* n, int fB, int lB, bool isF, int s,int pI,int pF);
 
 
 private:

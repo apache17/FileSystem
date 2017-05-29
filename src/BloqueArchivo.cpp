@@ -6,13 +6,15 @@ BloqueArchivo::BloqueArchivo(char * nombre, int numB, Archivo * a,int tamanoB, b
     archivo = a;
 }
 
-void BloqueArchivo::setFileEntry(char* n, int fB, int lB, bool isF, int s)
+void BloqueArchivo::setFileEntry(char* n, int fB, int lB, bool isF, int s,int pI,int pF)
 {
     fe->setFirstBlock(fB);
     fe->setIsFolder(isF);
     fe->setLastBlock(lB);
     fe->setNombre(n);
     fe->setSize(s);
+    fe->setPosFinal(pF);
+    fe->setPosInicio(pI);
 
 }
 

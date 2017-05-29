@@ -26,9 +26,8 @@ void BloqueFolder::setEspacioUtilizado(int eU)
     espacioUtilizado += eU;
 }
 
-void BloqueFolder::agregarFileEntry(char* n, int fB, int lB, bool isF, int s,int pI,int pF)
+void BloqueFolder::agregarFileEntry(FileEntry * fe,char* n, int fB, int lB, bool isF, int s,int pI,int pF)
 {
-    FileEntry * fe;
     fe->setFirstBlock(fB);
     fe->setIsFolder(isF);
     fe->setLastBlock(lB);
@@ -36,7 +35,6 @@ void BloqueFolder::agregarFileEntry(char* n, int fB, int lB, bool isF, int s,int
     fe->setSize(s);
     fe->setPosInicio(pI);
     fe->setPosFinal(pF);
-
     listaEntries.push_back(fe);
 }
 

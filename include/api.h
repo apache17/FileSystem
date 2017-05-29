@@ -12,7 +12,7 @@ class API
         API();
         Bloque * get(vector<Bloque*> lista,int i);
         Bloque *  addBloque(Archivo * arch, string tipo, DiscoVirtual * dv);
-        void addData(BloqueFolder *bf,char * data,char * nombre);
+        void addData(DiscoVirtual * dv,BloqueFolder *bf,char * data,char * nombre);
         void dir(DiscoVirtual * dv);
 
     protected:

@@ -15,7 +15,7 @@ class BloqueArchivo:public Bloque
         bool getDisponible();
         Archivo * getArchivo();
         FileEntry * getFileEntry();
-        void setFileEntry(char* n, int fB, int lB, bool isF, int s);
+        void setFileEntry(char* n, int fB, int lB, bool isF, int s,int pI,int pF);
         void imprimirContenido();
 
 
