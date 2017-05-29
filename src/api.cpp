@@ -16,31 +16,28 @@ void API::addData(DiscoVirtual * dv,char * nombre,BloqueFolder * bf,char * data)
     FileEntry * fe = lista[x-1];
     FileEntry * feN = new FileEntry();
 
-    int y = bf->getEspacioUtilizado()%4096;
+    int z = bf->getEspacioUtilizado()%4096;
+    int y = (bf->getEspacioUtilizado()+strlen(data))/4096;
 
-    if((y%4096)<4096)
+    if(y<1)
     {
         archivo->escribir(data,bf->getEspacioUtilizado(),strlen(data));
         bf->agregarFileEntry(feN,nombre,fe->getFirstBLock(),fe->getLastBlock(),false,strlen(data),fe->getPosFinal()+1,fe->getPosFinal()+strlen(data));
         bf->setEspacioUtilizado(strlen(data));
     }
-    else
-    {
-        int pos = dv->getMasterBlock()->getSigDisponible();
-        int size = strlen(data)/4096;
-        if(size<1)
-        {
-            dv->getMasterBlock()->setSiguienteDisponible(pos+1);
-            bf->agregarFileEntry(feN,nombre,pos,pos,false,strlen(data),fe->getPosFinal()+1,fe->getPosFinal()+strlen(data));
-        }
-        else
-        {
-            if(strlen(data)%4096>0)
-                size++;
-            dv->getMasterBlock()->setSiguienteDisponible(pos+size);
-            bf->agregarFileEntry(feN,nombre,pos,pos+size-1,false,strlen(data),fe->getPosFinal()+1,fe->getPosFinal()+strlen(data));
 
-        }
+    else if(y>=1)
+    {
+        if(strlen(data)%4096>0)
+            y++;
+        int pos = dv->getMasterBlock()->getSigDisponible();
+        dv->getMasterBlock()->setSiguienteDisponible(pos+y);
+
+        bf->agregarFileEntry(feN,nombre,pos,dv->getMasterBlock()->getSigDisponible()-1,false,strlen(data),fe->getPosFinal()+1,fe->getPosFinal()+strlen(data));
+        archivo->escribir(data,pos*4096,strlen(data));
+
+        bf->setEspacioUtilizado(strlen(data));
+
     }
 }
 
