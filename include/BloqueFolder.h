@@ -13,8 +13,13 @@ public:
     BloqueFolder(char * nombre, int numB, Archivo * a,int tamanoB,bool disp);
 
     int getTamanoBloque();
+    void imprimirN();
     int getNumBloque();
+    int getEspacioUtilizado();
+    void setEspacioUtilizado(int eU);
     char * getNombre();
+    void setNombre(char * n);
+    Archivo * getArchivo();
     vector<FileEntry*> getListaEntries();
     bool getDisponible();
     void cargar();
@@ -27,8 +32,10 @@ private:
     vector<FileEntry*> listaEntries;
     int tamanoBloque;
     int numBloque;
+    int espacioUtilizado;
     bool disponible;
     char * nombre;
+    Archivo * archivo;
 
 };
 

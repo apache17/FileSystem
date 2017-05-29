@@ -2,7 +2,28 @@
 
 BloqueFolder::BloqueFolder(char * nombre, int numB, Archivo * a,int tamanoB,bool disp):Bloque(nombre,numB,tamanoB,disp)
 {
+    espacioUtilizado = 0;
+    archivo = a;
+}
 
+Archivo * BloqueFolder::getArchivo()
+{
+    return archivo;
+}
+
+void BloqueFolder::setNombre(char * n)
+{
+    nombre = n;
+}
+
+int BloqueFolder::getEspacioUtilizado()
+{
+    return espacioUtilizado;
+}
+
+void BloqueFolder::setEspacioUtilizado(int eU)
+{
+    espacioUtilizado += eU;
 }
 
 void BloqueFolder::agregarFileEntry(char* n, int fB, int lB, bool isF, int s,int pI,int pF)
@@ -19,6 +40,15 @@ void BloqueFolder::agregarFileEntry(char* n, int fB, int lB, bool isF, int s,int
     listaEntries.push_back(fe);
 }
 
+void BloqueFolder::imprimirN()
+{
+    if(strlen(nombre)!=0)
+    {
+        for(int x = 0; x<strlen(nombre);x++)
+            cout<<nombre[x];
+        cout<<""<<endl;
+    }
+}
 bool BloqueFolder::getDisponible()
 {
     return Bloque::getDisponible();
