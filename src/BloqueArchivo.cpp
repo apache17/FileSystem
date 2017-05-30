@@ -1,20 +1,28 @@
 #include "BloqueArchivo.h"
 
-BloqueArchivo::BloqueArchivo(char * nombre, int numB,int tamanoB):Bloque(nombre,numB,tamanoB)
+BloqueArchivo::BloqueArchivo(char * nombre, int numB,bool escritura):Bloque(nombre,numB)
 {
+    escritura = escritura;
     fe = new FileEntry();
 }
 
-void BloqueArchivo::setFileEntry(char* n, int fB, int lB, bool isF, int s,int pI,int pF)
+bool BloqueArchivo::getEscritura()
+{
+    return escritura;
+}
+
+void BloqueArchivo::setEscritura(bool escritura)
+{
+    escritura = escritura;
+}
+
+void BloqueArchivo::setFileEntry(char* n, int fB, int lB, bool isF, int s)
 {
     fe->setFirstBlock(fB);
     fe->setIsFolder(isF);
     fe->setLastBlock(lB);
     fe->setNombre(n);
     fe->setSize(s);
-    fe->setPosFinal(pF);
-    fe->setPosInicio(pI);
-
 }
 
 void BloqueArchivo::imprimirContenido()

@@ -10,7 +10,7 @@
 
 class BloqueFolder:public Bloque{
 public:
-    BloqueFolder(char * nombre, int numB,int tamanoB);
+    BloqueFolder(char * nombre, int numB);
 
     int getTamanoBloque();
     void imprimirN();
@@ -21,7 +21,7 @@ public:
     void setNombre(char * n);
     vector<FileEntry*> getListaEntries();
     void cargar();
-    void agregarFileEntry(FileEntry * fe,char* n, int fB, int lB, bool isF, int s,int pI,int pF);
+    void agregarFileEntry(FileEntry * fe,char* n, int fB, int lB, bool isF, int s);
     void printRoot();
 
 

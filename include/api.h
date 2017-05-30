@@ -14,8 +14,9 @@ class API
         void dir(DiscoVirtual * dv);
         void printRoot();
 
-        Bloque *  addBloque(DiscoVirtual * dv,char * nombre, string tipo,char * data);
-        void addData(DiscoVirtual * dv,char * data,BloqueFolder *bf,char * nombre);
+        Bloque *  addBloque(DiscoVirtual * dv,char * nombre, string tipo);
+        void addDataAFolder(DiscoVirtual * dv,char * data,BloqueFolder *bf,char * nombre);
+        void addDataAArchivo(DiscoVirtual * dv,char * data,BloqueArchivo *ba);
         Bloque * addRootBloque(DiscoVirtual * dv);
 
         BloqueFolder * root;

@@ -26,7 +26,7 @@ Bloque * DiscoVirtual::asignarSiguienteBloque(int numeroBloque)
     string str = "Bloque";
     char *cstr = new char[str.length() + 1];
     strcpy(cstr, str.c_str());
-    Bloque * bloque = new Bloque(cstr,numeroBloque,mb->getTamanoBloque());
+    Bloque * bloque = new Bloque(cstr,numeroBloque);
     listaBloques.push_back(bloque);
     return bloque;
 }

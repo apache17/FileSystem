@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1496112350 source:c:\users\boris\desktop\estructura datos ii\filesystem\main.cpp
+1496118779 source:c:\users\boris\desktop\estructura datos ii\filesystem\main.cpp
 	<iostream>
 	"api.h"
 	"DiscoVirtual.h"
@@ -16,18 +16,18 @@
 	<iostream>
 	<string.h>
 
-1496075013 source:c:\users\boris\desktop\estructura datos ii\filesystem\src\bloquearchivo.cpp
+1496116177 source:c:\users\boris\desktop\estructura datos ii\filesystem\src\bloquearchivo.cpp
 	"BloqueArchivo.h"
 
-1496075072 c:\users\boris\desktop\estructura datos ii\filesystem\include\bloquearchivo.h
+1496116176 c:\users\boris\desktop\estructura datos ii\filesystem\include\bloquearchivo.h
 	<stdio.h>
 	"bloque.h"
 	"FileEntry.h"
 
-1496108629 source:c:\users\boris\desktop\estructura datos ii\filesystem\src\bloquefolder.cpp
+1496115481 source:c:\users\boris\desktop\estructura datos ii\filesystem\src\bloquefolder.cpp
 	"BloqueFolder.h"
 
-1496108172 c:\users\boris\desktop\estructura datos ii\filesystem\include\bloquefolder.h
+1496115481 c:\users\boris\desktop\estructura datos ii\filesystem\include\bloquefolder.h
 	<vector>
 	<stdio.h>
 	<iostream>
@@ -36,7 +36,7 @@
 	"FileEntry.h"
 	"bloque.h"
 
-1496081363 source:c:\users\boris\desktop\estructura datos ii\filesystem\src\discovirtual.cpp
+1496115530 source:c:\users\boris\desktop\estructura datos ii\filesystem\src\discovirtual.cpp
 	"DiscoVirtual.h"
 
 1495950636 c:\users\boris\desktop\estructura datos ii\filesystem\include\discovirtual.h
@@ -65,16 +65,16 @@
 1496081201 source:c:\users\boris\desktop\estructura datos ii\filesystem\src\masterblock.cpp
 	"MasterBlock.h"
 
-1496075069 c:\users\boris\desktop\estructura datos ii\filesystem\include\bloque.h
+1496115037 c:\users\boris\desktop\estructura datos ii\filesystem\include\bloque.h
 	"Archivo.h"
 
-1496075016 source:c:\users\boris\desktop\estructura datos ii\filesystem\src\bloque.cpp
+1496115035 source:c:\users\boris\desktop\estructura datos ii\filesystem\src\bloque.cpp
 	"bloque.h"
 
-1496112273 source:c:\users\boris\desktop\estructura datos ii\filesystem\src\api.cpp
+1496117599 source:c:\users\boris\desktop\estructura datos ii\filesystem\src\api.cpp
 	"api.h"
 
-1496112362 c:\users\boris\desktop\estructura datos ii\filesystem\include\api.h
+1496117618 c:\users\boris\desktop\estructura datos ii\filesystem\include\api.h
 	"MasterBlock.h"
 	"BloqueArchivo.h"
 	"BloqueFolder.h"

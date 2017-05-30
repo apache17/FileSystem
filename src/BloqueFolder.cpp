@@ -1,6 +1,6 @@
 #include "BloqueFolder.h"
 
-BloqueFolder::BloqueFolder(char * nombre, int numB,int tamanoB):Bloque(nombre,numB,tamanoB)
+BloqueFolder::BloqueFolder(char * nombre, int numB):Bloque(nombre,numB)
 {
     espacioUtilizado = 0;
 }
@@ -20,15 +20,13 @@ void BloqueFolder::setEspacioUtilizado(int eU)
     espacioUtilizado += eU;
 }
 
-void BloqueFolder::agregarFileEntry(FileEntry * fe,char* n, int fB, int lB, bool isF, int s,int pI,int pF)
+void BloqueFolder::agregarFileEntry(FileEntry * fe,char* n, int fB, int lB, bool isF, int s)
 {
     fe->setFirstBlock(fB);
     fe->setIsFolder(isF);
     fe->setLastBlock(lB);
     fe->setNombre(n);
     fe->setSize(s);
-    fe->setPosInicio(pI);
-    fe->setPosFinal(pF);
     listaEntries.push_back(fe);
 }
 
