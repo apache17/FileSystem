@@ -4,10 +4,6 @@ API::API(){
 
 }
 
-Bloque * API::get(vector<Bloque*> lista, int i){
-    return lista[i];
-}
-
 void API::addData(DiscoVirtual * dv,char * nombre,BloqueFolder * bf,char * data)
 {
     Archivo * archivo = dv->getArchivo();
@@ -39,6 +35,57 @@ void API::addData(DiscoVirtual * dv,char * nombre,BloqueFolder * bf,char * data)
         bf->setEspacioUtilizado(strlen(data));
 
     }
+}
+
+Bloque * API::addRootBloque(DiscoVirtual * dv){
+
+    FileEntry *fe = new FileEntry();
+    int pos = 1;
+    char * ra = {"raiz"};
+    vector<Bloque*> lista = dv->getListaBloques();
+    int cant = lista.size();
+    char * data = new char[cant];
+    for(int a = 0; a<cant; a++){
+        memcpy(&data[a], lista.at(a), sizeof(lista));
+    }
+    int size = strlen(data)/4096;
+
+    if(size<1){
+        root = new BloqueFolder(ra,pos,strlen(data));
+        dv->getMasterBlock()->setSiguienteDisponible(pos+1);
+        dv->getArchivo()->escribir(data,4096*pos,strlen(data));
+
+        root->setEspacioUtilizado(strlen(data)+1);
+        root->agregarFileEntry(fe,ra,pos,pos,true,strlen(data),0,strlen(data)-1);
+        dv->listaBloqueFolder.push_back(root);
+        root->setNombre(ra);
+        return root;
+    }
+    else if(size>=1)
+    {
+        if(strlen(data)%4096>0)
+            size++;
+        root = new BloqueFolder(ra,pos,strlen(data));
+        dv->getMasterBlock()->setSiguienteDisponible(pos+size);
+        dv->getArchivo()->escribir(data,4096*pos,strlen(data));
+
+        root->setEspacioUtilizado(strlen(data));
+        root->agregarFileEntry(fe,ra,pos,pos+size-1,true,strlen(data),0,strlen(data)-1);
+        dv->listaBloqueFolder.push_back(root);
+        root->setNombre(ra);
+        return root;
+    }
+    return NULL;
+}
+
+void API::printRoot(){
+    vector<FileEntry*> rootEntries = root->getListaEntries();
+    for(int x = 0;x<rootEntries.size();x++)
+    {
+        rootEntries[x]->imprimirEntry();
+        cout<<""<<endl;
+    }
+
 }
 
 Bloque * API::addBloque(DiscoVirtual * dv,char * nombre, string tipo,char * data)

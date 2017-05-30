@@ -22,6 +22,8 @@ public:
     vector<FileEntry*> getListaEntries();
     void cargar();
     void agregarFileEntry(FileEntry * fe,char* n, int fB, int lB, bool isF, int s,int pI,int pF);
+    void printRoot();
+
 
 
 private:
