@@ -20,7 +20,7 @@ void API::addRoot(){
     char * ra = {"Raiz"};
     vector<Bloque*> lista = dv->getListaBloques();
     Bloque * bloque = lista[0];
-    bloque = new BloqueFolder(ra,1);
+    bloque = new BloqueFolder(ra,1,0);
     BloqueFolder * nRoot = dynamic_cast<BloqueFolder*>(bloque);
     dv->getMasterBlock()->setSiguienteDisponible(pos+2);
     dv->listaBloqueFolder.push_back(nRoot);
@@ -33,7 +33,8 @@ Bloque * API::crearArchivo(char * nombre, BloqueFolder * actual, char * contenid
     int pos = dv->getMasterBlock()->getSigDisponible();
     vector<Bloque*> lista = dv->getListaBloques();
     Bloque * b = lista[pos-1];
-    b = new BloqueArchivo(nombre,pos);
+    b = new BloqueArchivo(nombre,pos,strlen(contenido));
+    actual->setTamanoBloque(strlen(contenido));
     BloqueArchivo * ba = dynamic_cast<BloqueArchivo*>(b);
     int size = strlen(contenido)/4096;
 
@@ -65,7 +66,7 @@ Bloque * API::crearFolder(char * nombre,BloqueFolder * actual)
     int pos = dv->getMasterBlock()->getSigDisponible();
     vector<Bloque*> lista = dv->getListaBloques();
     Bloque * b = lista[pos-1];
-    b = new BloqueFolder(nombre,pos);
+    b = new BloqueFolder(nombre,pos,0);
     dv->getMasterBlock()->setSiguienteDisponible(pos+1);
     BloqueFolder * bf = dynamic_cast<BloqueFolder*>(b);
     bf->setFileEntry(nombre,pos,pos,true,0);

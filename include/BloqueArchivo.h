@@ -8,13 +8,12 @@ using namespace std;
 class BloqueArchivo:public Bloque
 {
     public:
-        BloqueArchivo(char * nombre, int numB);
+        BloqueArchivo(char * nombre, int numB, int tamB);
         int getTamanoBloque();
         int getNumBloque();
         char * getNombre();
         FileEntry * getFileEntry();
         void setFileEntry(char* n, int fB, int lB, bool isF, int s);
-        void imprimirContenido();
         bool getEscritura();
         void setEscritura(bool escritura);
 

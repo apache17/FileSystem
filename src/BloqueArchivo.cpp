@@ -1,6 +1,6 @@
 #include "BloqueArchivo.h"
 
-BloqueArchivo::BloqueArchivo(char * nombre, int numB):Bloque(nombre,numB)
+BloqueArchivo::BloqueArchivo(char * nombre, int numB,int tamB):Bloque(nombre,numB,tamB)
 {
     fe = new FileEntry();
 }
@@ -12,14 +12,6 @@ void BloqueArchivo::setFileEntry(char* n, int fB, int lB, bool isF, int s)
     fe->setLastBlock(lB);
     fe->setNombre(n);
     fe->setSize(s);
-}
-
-void BloqueArchivo::imprimirContenido()
-{
-    /*char * data = archivo->leer(1,archivo->getSize());
-    for(int x = 0; x<strlen(data);x++)
-        cout<<data[x];
-    cout<<""<<endl;*/
 }
 
 FileEntry * BloqueArchivo::getFileEntry()

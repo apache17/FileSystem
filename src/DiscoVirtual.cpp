@@ -9,7 +9,7 @@ DiscoVirtual::DiscoVirtual(Archivo * arch,int tamArc,int tamBlo){
 void DiscoVirtual::formatear()
 {
 
-    mb = new MasterBlock(tamBloque,(tamArchivo/tamBloque),-1,1);
+    mb = new MasterBlock(archivo,tamBloque,(tamArchivo/tamBloque),-1,1);
     mb->guardar();
 
     for(int a = 0; a<mb->getCantBloques(); a++)
@@ -26,14 +26,14 @@ Bloque * DiscoVirtual::asignarSiguienteBloque(int numeroBloque)
     string str = "Bloque";
     char *cstr = new char[str.length() + 1];
     strcpy(cstr, str.c_str());
-    Bloque * bloque = new Bloque(cstr,numeroBloque);
+    Bloque * bloque = new Bloque(cstr,numeroBloque,0);
     listaBloques.push_back(bloque);
     return bloque;
 }
 
 void DiscoVirtual::cargar(){
     archivo->abrir();
-    mb = new MasterBlock(tamBloque,(tamArchivo/tamBloque),0,1);
+    mb = new MasterBlock(archivo,tamBloque,(tamArchivo/tamBloque),0,1);
     this->mb->cargar();
 }
 
@@ -72,16 +72,17 @@ vector<Bloque*> DiscoVirtual::getListaBloques()
     return listaBloques;
 }
 
-/*vector<FileEntry*> DiscoVirtual::listarArchivosEnRaiz()
+vector<FileEntry*> DiscoVirtual::listarArchivosEnRaiz()
 {
+    vector<FileEntry*> lista;
     if(mb->getSigDisponible() == 1)
-        return new vector<FileEntry*>;
+        return lista;
 
     int numeroDeBloque = mb->getPrimerBloque();
 
-    BloqueFolder * bf = new BloqueFolder("root",numeroDeBloque,this->archivo,mb->getTamanoBloque(),0);
+    BloqueFolder * bf = new BloqueFolder("root",numeroDeBloque,0);
     bf->cargar();
-
-    return bf->getListaEntries();
+    lista = bf->getListaEntries();
+    return lista;
 }
-*/
+

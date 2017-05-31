@@ -5,7 +5,7 @@
 class Bloque
 {
     public:
-        Bloque(char * nombre, int numB);
+        Bloque(char * nombre, int numB,int tamB);
         virtual int getTamanoBloque();
         virtual int getNumBloque();
         virtual char * getNombre();

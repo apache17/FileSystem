@@ -1,8 +1,7 @@
 #include "BloqueFolder.h"
 
-BloqueFolder::BloqueFolder(char * nombre, int numB):Bloque(nombre,numB)
+BloqueFolder::BloqueFolder(char * nombre, int numB,int tamB):Bloque(nombre,numB,tamB)
 {
-    espacioUtilizado = 0;
     siguiente = NULL;
     anterior = NULL;
     fe = new FileEntry();
@@ -42,19 +41,10 @@ void BloqueFolder::setAnterior(BloqueFolder * bf)
     anterior = bf;
 }
 
-void BloqueFolder::setNombre(char * n)
+void BloqueFolder::setTamanoBloque(int tB)
 {
-    nombre = n;
-}
-
-int BloqueFolder::getEspacioUtilizado()
-{
-    return espacioUtilizado;
-}
-
-void BloqueFolder::setEspacioUtilizado(int eU)
-{
-    espacioUtilizado += eU;
+    tamanoBloque += tB;
+    fe->setSize(tamanoBloque);
 }
 
 void BloqueFolder::agregarFileEntry(FileEntry * fe)
@@ -62,15 +52,6 @@ void BloqueFolder::agregarFileEntry(FileEntry * fe)
     listaEntries.push_back(fe);
 }
 
-void BloqueFolder::imprimirN()
-{
-    if(strlen(nombre)!=0)
-    {
-        for(int x = 0; x<strlen(nombre);x++)
-            cout<<nombre[x];
-        cout<<""<<endl;
-    }
-}
 
 vector<FileEntry*> BloqueFolder::getListaEntries()
 {
