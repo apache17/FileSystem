@@ -17,6 +17,6 @@ int main()
     api->crearFolder(nombre,api->root);
     api->crearArchivo(nombre,api->root,contenido);
 
-    api->dir();
+    api->printRoot();
 
 }

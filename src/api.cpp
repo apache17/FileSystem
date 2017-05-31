@@ -42,6 +42,7 @@ Bloque * API::crearArchivo(char * nombre, BloqueFolder * actual, char * contenid
         dv->getMasterBlock()->setSiguienteDisponible(pos+1);
         archivo->escribir(contenido,pos*4096,strlen(contenido));
         ba->setFileEntry(nombre,pos,pos,false,strlen(contenido));
+        actual->agregarFileEntry(ba->getFileEntry());
     }
 
     else if(size>=1)
@@ -51,7 +52,6 @@ Bloque * API::crearArchivo(char * nombre, BloqueFolder * actual, char * contenid
         dv->getMasterBlock()->setSiguienteDisponible(pos+size);
         archivo->escribir(contenido,pos*4096,strlen(contenido));
         ba->setFileEntry(nombre,pos,pos+size,false,strlen(contenido));
-        ba->setFileEntry(nombre,pos,pos,false,strlen(contenido));
         actual->agregarFileEntry(ba->getFileEntry());
     }
 
