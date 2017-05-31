@@ -8,7 +8,7 @@ using namespace std;
 class BloqueArchivo:public Bloque
 {
     public:
-        BloqueArchivo(char * nombre, int numB,bool escritura);
+        BloqueArchivo(char * nombre, int numB);
         int getTamanoBloque();
         int getNumBloque();
         char * getNombre();
@@ -22,9 +22,10 @@ class BloqueArchivo:public Bloque
         void initFromChar(char * d);
         int tamanoBloque;
         int numBloque;
-        bool escritura;
         char * nombre;
         FileEntry *fe;
+
+
 };
 
 #endif // BLOQUEARCHIVO_H

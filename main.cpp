@@ -9,23 +9,14 @@ using namespace std;
 int main()
 {
     API * api = new API();
+    api->crearDiscoVirtual();
 
-    char * hola = {"Disco Virtual"};
-    char * hola1 = {"Mis Documentos"};
-    Archivo * archivo = new Archivo(hola,4194304);
-    DiscoVirtual * dv = new DiscoVirtual(archivo,4194304,4096);
-    dv->formatear(hola);
+    char * nombre = {"Mis Documentos"};
+    char * contenido = {"Hola Mundo"};
 
-    api->addBloque(dv,hola1,"Archivo");
-    api->addBloque(dv,hola1,"Folder");
+    api->crearFolder(nombre,api->root);
+    api->crearArchivo(nombre,api->root,contenido);
 
-    vector<BloqueArchivo*> lista = dv->listaBloqueArchivo;
-    BloqueArchivo * ba = lista[0];
+    api->dir();
 
-    vector<BloqueFolder*> lista2 = dv->listaBloqueFolder;
-    BloqueFolder * bf = lista2[0];
-
-    api->addDataAArchivo(dv,hola1,ba);
-    api->addDataAFolder(dv,hola1,bf,hola1);
-    api->dir(dv);
 }

@@ -1,19 +1,8 @@
 #include "BloqueArchivo.h"
 
-BloqueArchivo::BloqueArchivo(char * nombre, int numB,bool escritura):Bloque(nombre,numB)
+BloqueArchivo::BloqueArchivo(char * nombre, int numB):Bloque(nombre,numB)
 {
-    escritura = escritura;
     fe = new FileEntry();
-}
-
-bool BloqueArchivo::getEscritura()
-{
-    return escritura;
-}
-
-void BloqueArchivo::setEscritura(bool escritura)
-{
-    escritura = escritura;
 }
 
 void BloqueArchivo::setFileEntry(char* n, int fB, int lB, bool isF, int s)

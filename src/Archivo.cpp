@@ -6,12 +6,12 @@ Archivo::Archivo(char * d,long size)
     abierto = false;
     size = size;
 
-    /*if(strlen(this->direccion)> 0) {
+    if(strlen(this->direccion)> 0) {
         file = fopen(this->direccion,"w");
         fseek(file,size,SEEK_SET);
         fputc('\0',file);
         fclose(file);
-    }*/
+    }
 }
 
 int Archivo::getSize()

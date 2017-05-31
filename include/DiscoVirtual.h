@@ -11,26 +11,30 @@
 class DiscoVirtual{
 public:
     DiscoVirtual(Archivo * arch,int tamArc,int tamBlo);
+
     Bloque * asignarSiguienteBloque(int numeroBloque);
-    void formatear(char *nombreArchivo);
-
+    void formatear();
     void cargar();
-    void guardar();
-
     vector<FileEntry*> listarArchivosEnRaiz();
 
     int getTamanoArchivo();
     int getTamanoBloque();
     Archivo * getArchivo();
     MasterBlock * getMasterBlock();
+    BloqueFolder * getRaiz();
+    void setRaiz(BloqueFolder * bf);
+
     vector<Bloque*> getListaBloques();
     vector<BloqueArchivo*> listaBloqueArchivo;
     vector<BloqueFolder*> listaBloqueFolder;
+
 private:
     vector<Bloque*> listaBloques;
     int tamArchivo,tamBloque;
     Archivo * archivo;
     MasterBlock * mb;
+    BloqueFolder * raiz;
+
 };
 
 

@@ -11,15 +11,10 @@ class FileEntry
         FileEntry();
 
         void imprimirNombre();
-        int getPosInicio();
-        int getPosFinal();
         int getFirstBLock();
         int getLastBlock();
         void esFolder();
         int getSize();
-
-        void setPosInicio(int pI);
-        void setPosFinal(int pF);
         void setFirstBlock(int fB);
         void setLastBlock(int lB);
         void setNombre(char * n);
@@ -30,8 +25,6 @@ class FileEntry
 
     private:
         char* nombre;
-        int posInicio;
-        int posFinal;
         int firstBlock;
         int lastBlock;
         bool isFolder;

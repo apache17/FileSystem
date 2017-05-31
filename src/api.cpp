@@ -4,58 +4,74 @@ API::API(){
 
 }
 
-void API::addDataAArchivo(DiscoVirtual * dv,char * data,BloqueArchivo *ba)
+void API::crearDiscoVirtual()
 {
-    Archivo * archivo = dv->getArchivo();
-    int pos = ba->getFileEntry()->getFirstBLock();
-    int size = strlen(data)/4096;
-
-    if(size<1)
-    {
-        dv->getMasterBlock()->setSiguienteDisponible(pos+1);
-        archivo->escribir(data,pos*4096,strlen(data));
-        ba->getFileEntry()->setSize(strlen(data));
-    }
-
-    else if(size>=1)
-    {
-        if(strlen(data)%4096>0)
-            size++;
-        dv->getMasterBlock()->setSiguienteDisponible(pos+size);
-        archivo->escribir(data,pos*4096,strlen(data));
-        ba->getFileEntry()->setLastBlock(pos+size);
-        ba->getFileEntry()->setSize(strlen(data));
-    }
-
+    char * c = {"Disco Virtual"};
+    Archivo * archivo = new Archivo(c,4194304);
+    dv = new DiscoVirtual(archivo,4194304,4096);
+    dv->formatear();
+    addRoot();
 }
 
-void API::addDataAFolder(DiscoVirtual * dv,char * nombre,BloqueFolder * bf,char * data)
+void API::addRoot(){
+
+    FileEntry *fe = new FileEntry();
+    int pos = 1;
+    char * ra = {"Raiz"};
+    vector<Bloque*> lista = dv->getListaBloques();
+    Bloque * bloque = lista[0];
+    bloque = new BloqueFolder(ra,1);
+    BloqueFolder * nRoot = dynamic_cast<BloqueFolder*>(bloque);
+    dv->getMasterBlock()->setSiguienteDisponible(pos+2);
+    dv->listaBloqueFolder.push_back(nRoot);
+    this->root = nRoot;
+}
+
+Bloque * API::crearArchivo(char * nombre, BloqueFolder * actual, char * contenido)
 {
     Archivo * archivo = dv->getArchivo();
-    vector<FileEntry*> lista = bf->getListaEntries();
-    FileEntry * feN = new FileEntry();
     int pos = dv->getMasterBlock()->getSigDisponible();
-    int size = strlen(data)/4096;
+    vector<Bloque*> lista = dv->getListaBloques();
+    Bloque * b = lista[pos-1];
+    b = new BloqueArchivo(nombre,pos);
+    BloqueArchivo * ba = dynamic_cast<BloqueArchivo*>(b);
+    int size = strlen(contenido)/4096;
 
     if(size<1)
     {
         dv->getMasterBlock()->setSiguienteDisponible(pos+1);
-        archivo->escribir(data,pos*4096,strlen(data));
-        bf->agregarFileEntry(feN,nombre,pos,pos,false,strlen(data));
+        archivo->escribir(contenido,pos*4096,strlen(contenido));
+        ba->setFileEntry(nombre,pos,pos,false,strlen(contenido));
     }
 
     else if(size>=1)
     {
-        if(strlen(data)%4096>0)
+        if(strlen(contenido)%4096>0)
             size++;
         dv->getMasterBlock()->setSiguienteDisponible(pos+size);
-        bf->agregarFileEntry(feN,nombre,pos,pos+size,false,strlen(data));
-        archivo->escribir(data,pos*4096,strlen(data));
+        archivo->escribir(contenido,pos*4096,strlen(contenido));
+        ba->setFileEntry(nombre,pos,pos+size,false,strlen(contenido));
+        ba->setFileEntry(nombre,pos,pos,false,strlen(contenido));
+        actual->agregarFileEntry(ba->getFileEntry());
     }
+
+    dv->listaBloqueArchivo.push_back(ba);
+    return ba;
 }
 
-Bloque * API::addRootBloque(DiscoVirtual * dv){
-    return NULL;
+Bloque * API::crearFolder(char * nombre,BloqueFolder * actual)
+{
+    Archivo * archivo = dv->getArchivo();
+    FileEntry *fe = new FileEntry();
+    int pos = dv->getMasterBlock()->getSigDisponible();
+    vector<Bloque*> lista = dv->getListaBloques();
+    Bloque * b = lista[pos-1];
+    b = new BloqueFolder(nombre,pos);
+    dv->getMasterBlock()->setSiguienteDisponible(pos+1);
+    BloqueFolder * bf = dynamic_cast<BloqueFolder*>(b);
+    actual->agregarFileEntry(fe);
+    dv->listaBloqueFolder.push_back(bf);
+    return bf;
 }
 
 void API::printRoot(){
@@ -68,41 +84,7 @@ void API::printRoot(){
 
 }
 
-Bloque * API::addBloque(DiscoVirtual * dv,char * nombre, string tipo)
-{
-    Archivo * archivo = dv->getArchivo();
-    if(tipo == "Archivo")
-    {
-        int pos = dv->getMasterBlock()->getSigDisponible();
-        vector<Bloque*> lista = dv->getListaBloques();
-        Bloque * b = lista[pos];
-        b = new BloqueArchivo(nombre,pos,false);
-        dv->getMasterBlock()->setSiguienteDisponible(pos+1);
-        BloqueArchivo * ba = dynamic_cast<BloqueArchivo*>(b);
-        ba->setFileEntry(nombre,pos,pos,false,0);
-        dv->listaBloqueArchivo.push_back(ba);
-        return ba;
-    }
-
-    else if(tipo == "Folder")
-    {
-        FileEntry *fe = new FileEntry();
-        int pos = dv->getMasterBlock()->getSigDisponible();
-        vector<Bloque*> lista = dv->getListaBloques();
-        Bloque * b = lista[pos];
-        b = new BloqueFolder(nombre,pos);
-        dv->getMasterBlock()->setSiguienteDisponible(pos+1);
-        BloqueFolder * bf = dynamic_cast<BloqueFolder*>(b);
-        bf->agregarFileEntry(fe,nombre,pos,pos,true,0);
-        dv->listaBloqueFolder.push_back(bf);
-        bf->setNombre(nombre);
-        return bf;
-    }
-    return NULL;
-
-}
-
-void API::dir(DiscoVirtual * dv)
+void API::dir()
 {
     vector<BloqueArchivo*> lista = dv->listaBloqueArchivo;
     vector<BloqueFolder*> lista2 = dv->listaBloqueFolder;
@@ -128,9 +110,6 @@ void API::dir(DiscoVirtual * dv)
         cout<<""<<endl;
         cout<<"Entries de: ";
         bf->imprimirN();
-        cout<<"Espacio Utilizado : ";
-        cout<<bf->getEspacioUtilizado()<<endl;
-
         cout<<""<<endl;
         for(int x = 0;x<listaE.size();x++)
         {

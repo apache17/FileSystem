@@ -21,8 +21,13 @@ public:
     void setNombre(char * n);
     vector<FileEntry*> getListaEntries();
     void cargar();
-    void agregarFileEntry(FileEntry * fe,char* n, int fB, int lB, bool isF, int s);
+    void agregarFileEntry(FileEntry * fe);
     void printRoot();
+
+    BloqueFolder * getSiguiente();
+    BloqueFolder * getAnterior();
+    void setSiguiente(BloqueFolder * bf);
+    void setAnterior(BloqueFolder * bf);
 
 
 
@@ -34,6 +39,9 @@ private:
     int numBloque;
     int espacioUtilizado;
     char * nombre;
+    BloqueFolder * siguiente;
+    BloqueFolder * anterior;
+
 };
 
 #endif // BLOQUEFOLDER_H

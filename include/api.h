@@ -11,15 +11,16 @@ class API
     public:
         API();
 
-        void dir(DiscoVirtual * dv);
+        void dir();
         void printRoot();
+        void crearDiscoVirtual();
 
-        Bloque *  addBloque(DiscoVirtual * dv,char * nombre, string tipo);
-        void addDataAFolder(DiscoVirtual * dv,char * data,BloqueFolder *bf,char * nombre);
-        void addDataAArchivo(DiscoVirtual * dv,char * data,BloqueArchivo *ba);
-        Bloque * addRootBloque(DiscoVirtual * dv);
+        Bloque * crearArchivo(char * nombre, BloqueFolder * actual, char * contenido);
+        Bloque * crearFolder(char * nombre,BloqueFolder * actual);
 
+        void addRoot();
         BloqueFolder * root;
+        DiscoVirtual * dv;
 
     protected:
 

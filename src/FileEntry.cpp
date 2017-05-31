@@ -6,16 +6,11 @@ FileEntry::FileEntry() {
     lastBlock = 0;
     isFolder = false;
     size = 0;
-    posFinal = 0;
-    posInicio = 0;
 }
 void FileEntry::imprimirEntry()
 {
+    cout<<"Nombre : ";
     imprimirNombre();
-    cout<<"Posicion de Inicio : ";
-    cout<<getPosInicio()<<endl;
-    cout<<"Posicion Final : ";
-    cout<<getPosFinal()<<endl;
     cout<<"Primer Bloque : ";
     cout<<getFirstBLock()<<endl;
     cout<<"Ultimo Bloque : ";
@@ -36,26 +31,6 @@ void FileEntry::imprimirEntry()
  {
      firstBlock = fB;
  }
-
-void FileEntry::setPosInicio(int pI)
-{
-     posInicio = pI;
-}
-
-void FileEntry::setPosFinal(int pF)
-{
-     posFinal = pF;
-}
-
-int FileEntry::getPosFinal()
-{
-    return posFinal;
-}
-
-int FileEntry::getPosInicio()
-{
-    return posInicio;
-}
 
 void FileEntry::setLastBlock(int lB)
 {

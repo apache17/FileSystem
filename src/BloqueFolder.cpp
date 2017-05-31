@@ -3,6 +3,28 @@
 BloqueFolder::BloqueFolder(char * nombre, int numB):Bloque(nombre,numB)
 {
     espacioUtilizado = 0;
+    siguiente = NULL;
+    anterior = NULL;
+}
+
+BloqueFolder * BloqueFolder::getSiguiente()
+{
+    return siguiente;
+}
+
+BloqueFolder * BloqueFolder::getAnterior()
+{
+    return anterior;
+}
+
+void BloqueFolder::setSiguiente(BloqueFolder * bf)
+{
+    siguiente = bf;
+}
+
+void BloqueFolder::setAnterior(BloqueFolder * bf)
+{
+    anterior = bf;
 }
 
 void BloqueFolder::setNombre(char * n)
@@ -20,13 +42,8 @@ void BloqueFolder::setEspacioUtilizado(int eU)
     espacioUtilizado += eU;
 }
 
-void BloqueFolder::agregarFileEntry(FileEntry * fe,char* n, int fB, int lB, bool isF, int s)
+void BloqueFolder::agregarFileEntry(FileEntry * fe)
 {
-    fe->setFirstBlock(fB);
-    fe->setIsFolder(isF);
-    fe->setLastBlock(lB);
-    fe->setNombre(n);
-    fe->setSize(s);
     listaEntries.push_back(fe);
 }
 
