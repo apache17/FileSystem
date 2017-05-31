@@ -19,6 +19,8 @@ public:
     void setEspacioUtilizado(int eU);
     char * getNombre();
     void setNombre(char * n);
+    FileEntry * getFileEntry();
+    void setFileEntry(char* n, int fB, int lB, bool isF, int s);
     vector<FileEntry*> getListaEntries();
     void cargar();
     void agregarFileEntry(FileEntry * fe);
@@ -41,6 +43,7 @@ private:
     char * nombre;
     BloqueFolder * siguiente;
     BloqueFolder * anterior;
+    FileEntry *fe;
 
 };
 

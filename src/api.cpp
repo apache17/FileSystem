@@ -62,14 +62,14 @@ Bloque * API::crearArchivo(char * nombre, BloqueFolder * actual, char * contenid
 Bloque * API::crearFolder(char * nombre,BloqueFolder * actual)
 {
     Archivo * archivo = dv->getArchivo();
-    FileEntry *fe = new FileEntry();
     int pos = dv->getMasterBlock()->getSigDisponible();
     vector<Bloque*> lista = dv->getListaBloques();
     Bloque * b = lista[pos-1];
     b = new BloqueFolder(nombre,pos);
     dv->getMasterBlock()->setSiguienteDisponible(pos+1);
     BloqueFolder * bf = dynamic_cast<BloqueFolder*>(b);
-    actual->agregarFileEntry(fe);
+    bf->setFileEntry(nombre,pos,pos,true,0);
+    actual->agregarFileEntry(bf->getFileEntry());
     dv->listaBloqueFolder.push_back(bf);
     return bf;
 }
@@ -107,9 +107,6 @@ void API::dir()
     {
         BloqueFolder * bf = lista2[x];
         vector<FileEntry*> listaE = bf->getListaEntries();
-        cout<<""<<endl;
-        cout<<"Entries de: ";
-        bf->imprimirN();
         cout<<""<<endl;
         for(int x = 0;x<listaE.size();x++)
         {

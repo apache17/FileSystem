@@ -5,6 +5,21 @@ BloqueFolder::BloqueFolder(char * nombre, int numB):Bloque(nombre,numB)
     espacioUtilizado = 0;
     siguiente = NULL;
     anterior = NULL;
+    fe = new FileEntry();
+}
+
+void BloqueFolder::setFileEntry(char* n, int fB, int lB, bool isF, int s)
+{
+    fe->setFirstBlock(fB);
+    fe->setIsFolder(isF);
+    fe->setLastBlock(lB);
+    fe->setNombre(n);
+    fe->setSize(s);
+}
+
+FileEntry * BloqueFolder::getFileEntry()
+{
+    return fe;
 }
 
 BloqueFolder * BloqueFolder::getSiguiente()

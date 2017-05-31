@@ -24,10 +24,10 @@
 	"bloque.h"
 	"FileEntry.h"
 
-1496194706 source:c:\users\boris\desktop\estructura datos ii\filesystem\src\bloquefolder.cpp
+1496198837 source:c:\users\boris\desktop\estructura datos ii\filesystem\src\bloquefolder.cpp
 	"BloqueFolder.h"
 
-1496194897 c:\users\boris\desktop\estructura datos ii\filesystem\include\bloquefolder.h
+1496198771 c:\users\boris\desktop\estructura datos ii\filesystem\include\bloquefolder.h
 	<vector>
 	<stdio.h>
 	<iostream>
