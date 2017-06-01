@@ -15,7 +15,6 @@ void MasterBlock::cargar(){
 void MasterBlock::guardar()
 {
     char * data = new char[tamanoBloque];
-
     int pos = 0;
     memcpy(&data[pos], &tamanoBloque, 4);
     pos+=4;
@@ -25,16 +24,13 @@ void MasterBlock::guardar()
     pos+=4;
     memcpy(&data[pos], &sigDisponible, 4);
     pos+=4;
-
     archivo->escribir(data,0,16);
 
 }
 
 MasterBlock * MasterBlock::charToMasterBlock(char * c){
     int tamB,cantB,first,sigDis = 0;
-
     int pos = 0;
-
     memcpy(&tamB, &c[pos], 4);
     pos+=4;
     memcpy(&cantB, &c[pos], 4);
@@ -43,14 +39,11 @@ MasterBlock * MasterBlock::charToMasterBlock(char * c){
     pos+=4;
     memcpy(&sigDis, &c[pos], 4);
     pos+=4;
-
     return new MasterBlock(archivo,tamB,cantB,first,sigDis);
-
 }
 
 char * MasterBlock::masterBlockToChar(){
     char * data = new char[tamanoBloque];
-
     int pos = 0;
     memcpy(&data[pos], &tamanoBloque, 4);
     pos+=4;
@@ -60,14 +53,11 @@ char * MasterBlock::masterBlockToChar(){
     pos+=4;
     memcpy(&data[pos], &sigDisponible, 4);
     pos+=4;
-
     return data;
-
 }
 
 void MasterBlock::initFromChar(char * d){
     int pos = 0;
-
     memcpy(&this->tamanoBloque, &d[pos], 4);
     pos+=4;
     memcpy(&this->cantBloques, &d[pos], 4);
@@ -76,7 +66,6 @@ void MasterBlock::initFromChar(char * d){
     pos+=4;
     memcpy(&this->sigDisponible, &d[pos], 4);
     pos+=4;
-
 }
 
 int MasterBlock::getTamanoBloque()

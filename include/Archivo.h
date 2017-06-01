@@ -13,9 +13,7 @@ class Archivo{
         char * direccion;
         FILE* file;
         bool abierto;
-
         long size;
-
         FILE * abrir();
         int escribir(char * data, int pos, int longitud);
         char * leer(int pos, int longi);

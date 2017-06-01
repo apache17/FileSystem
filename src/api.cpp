@@ -123,13 +123,11 @@ void API::dir()
         cout<<""<<endl;
         for(int y = 0; y < listaE.size();y++)
         {
-
              listaE[y]->imprimirEntry();
              cout<<""<<endl;
         }
         cout<<"-------------------------"<<endl;
         cout<<""<<endl;
-
     }
 
 }
