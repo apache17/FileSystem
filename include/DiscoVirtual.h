@@ -34,7 +34,6 @@ private:
     Archivo * archivo;
     MasterBlock * mb;
     BloqueFolder * raiz;
-
 };
 
 

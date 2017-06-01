@@ -9,22 +9,29 @@ FileEntry::FileEntry() {
 }
 void FileEntry::imprimirEntry()
 {
-    cout<<"Nombre : ";
-    imprimirNombre();
-    cout<<"Primer Bloque : ";
+    cout<<"Direccion: ";
+    char * nombre = getNombre();
+    for(int x = 0; x < strlen(nombre);x++)
+        cout<<nombre[x];
+    cout<<""<<endl;
+
+    cout<<"First Block: ";
     cout<<getFirstBLock()<<endl;
-    cout<<"Ultimo Bloque : ";
+    cout<<"Last Block: ";
     cout<<getLastBlock()<<endl;
-    cout<<"Tamano : ";
+
+    if(getEsFolder())
+        cout<<"Tipo: Folder"<<endl;
+    else
+        cout<<"Tipo: Archivo"<<endl;
+    cout<<"Size: ";
     cout<<getSize()<<endl;
-    esFolder();
+
 }
 
- void FileEntry::imprimirNombre()
+ char * FileEntry::getNombre()
  {
-     for(int x = 0; x < strlen(nombre);x++)
-        cout<<nombre[x];
-     cout<<""<<endl;
+     return nombre;
  }
 
  void FileEntry::setFirstBlock(int fB)
@@ -44,7 +51,7 @@ void FileEntry::setNombre(char * n)
 
 void FileEntry::setSize(int s)
 {
-    size = s;
+    size += s;
 }
 
 void FileEntry::setIsFolder(bool iF)
@@ -62,12 +69,9 @@ int FileEntry::getLastBlock()
     return lastBlock;
 }
 
-void FileEntry::esFolder()
+bool FileEntry::getEsFolder()
 {
-    if(isFolder)
-        cout<<"Es un Folder"<<endl;
-    else
-        cout<<"Es un Archivo"<<endl;
+    return isFolder;
 }
 
 int FileEntry::getSize()

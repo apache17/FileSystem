@@ -1,40 +1,43 @@
 #include "api.h"
 
-API::API(){
-
+API::API()
+{
+    rootSize = 0;
 }
 
 void API::crearDiscoVirtual()
 {
     char * c = {"Disco Virtual"};
-    Archivo * archivo = new Archivo(c,4194304);
-    dv = new DiscoVirtual(archivo,4194304,4096);
+    Archivo * archivo = new Archivo(c,1048576);
+    dv = new DiscoVirtual(archivo,1048576,4096);
     dv->formatear();
     addRoot();
 }
 
 void API::addRoot(){
-
-    FileEntry *fe = new FileEntry();
     int pos = 1;
     char * ra = {"Raiz"};
     vector<Bloque*> lista = dv->getListaBloques();
     Bloque * bloque = lista[0];
-    bloque = new BloqueFolder(ra,1,0);
+    bloque = new BloqueFolder(ra,1,0,dv->getArchivo());
     BloqueFolder * nRoot = dynamic_cast<BloqueFolder*>(bloque);
-    dv->getMasterBlock()->setSiguienteDisponible(pos+2);
+    dv->getMasterBlock()->setSiguienteDisponible(pos+3);
     dv->listaBloqueFolder.push_back(nRoot);
+    nRoot->setNombre(ra);
     this->root = nRoot;
 }
 
 Bloque * API::crearArchivo(char * nombre, BloqueFolder * actual, char * contenido)
 {
     Archivo * archivo = dv->getArchivo();
+    archivo->abrir();
     int pos = dv->getMasterBlock()->getSigDisponible();
     vector<Bloque*> lista = dv->getListaBloques();
     Bloque * b = lista[pos-1];
-    b = new BloqueArchivo(nombre,pos,strlen(contenido));
-    actual->setTamanoBloque(strlen(contenido));
+
+    b = new BloqueArchivo(nombre,pos,strlen(contenido),dv->getArchivo());
+    actual->getFileEntry()->setSize(strlen(contenido));
+
     BloqueArchivo * ba = dynamic_cast<BloqueArchivo*>(b);
     int size = strlen(contenido)/4096;
 
@@ -44,6 +47,7 @@ Bloque * API::crearArchivo(char * nombre, BloqueFolder * actual, char * contenid
         archivo->escribir(contenido,pos*4096,strlen(contenido));
         ba->setFileEntry(nombre,pos,pos,false,strlen(contenido));
         actual->agregarFileEntry(ba->getFileEntry());
+
     }
 
     else if(size>=1)
@@ -57,65 +61,76 @@ Bloque * API::crearArchivo(char * nombre, BloqueFolder * actual, char * contenid
     }
 
     dv->listaBloqueArchivo.push_back(ba);
+    escribirEntries(ba->getFileEntry());
     return ba;
 }
 
 Bloque * API::crearFolder(char * nombre,BloqueFolder * actual)
 {
     Archivo * archivo = dv->getArchivo();
+    archivo->abrir();
     int pos = dv->getMasterBlock()->getSigDisponible();
     vector<Bloque*> lista = dv->getListaBloques();
     Bloque * b = lista[pos-1];
-    b = new BloqueFolder(nombre,pos,0);
+
+    b = new BloqueFolder(nombre,pos,0,archivo);
     dv->getMasterBlock()->setSiguienteDisponible(pos+1);
     BloqueFolder * bf = dynamic_cast<BloqueFolder*>(b);
+
     bf->setFileEntry(nombre,pos,pos,true,0);
     actual->agregarFileEntry(bf->getFileEntry());
+    escribirEntries(bf->getFileEntry());
     dv->listaBloqueFolder.push_back(bf);
+
+    bf->setNombre(nombre);
+
     return bf;
 }
 
-void API::printRoot(){
-    vector<FileEntry*> rootEntries = root->getListaEntries();
-    for(int x = 0;x<rootEntries.size();x++)
-    {
-        rootEntries[x]->imprimirEntry();
-        cout<<""<<endl;
-    }
+void API::escribirEntries(FileEntry *fe)
+{
+    char * data = new char[48];
+    int firstBlock = fe->getFirstBLock();
+    int lastBlock = fe->getLastBlock();
+    int size = fe->getSize();
+    int esFolder = fe->getEsFolder();
+    int pos = 0;
 
+    memcpy(&data[pos], fe->getNombre(), 35);
+    pos+=35;
+    memcpy(&data[pos], &firstBlock,4);
+    pos+=4;
+    memcpy(&data[pos], &lastBlock, 4);
+    pos+=4;
+    memcpy(&data[pos], &esFolder, 1);
+    pos+=1;
+    memcpy(&data[pos], &size, 4);
+    pos+=4;
+
+    dv->getArchivo()->abrir();
+    dv->getArchivo()->escribir(data,4096+rootSize,48);
+    rootSize += 48;
 }
 
 void API::dir()
 {
-    vector<BloqueArchivo*> lista = dv->listaBloqueArchivo;
-    vector<BloqueFolder*> lista2 = dv->listaBloqueFolder;
-    cout<<"Bloques de Archivo"<<endl;
-    cout<<""<<endl;
-
-    for(int x = 0; x<lista.size();x++)
+    vector<BloqueFolder*> lista = dv->listaBloqueFolder;
+    for(int x = 0; x < lista.size();x++)
     {
-        BloqueArchivo * ba = lista[x];
-        ba->getFileEntry()->imprimirEntry();
-        cout<<"--------------------------------------"<<endl;
+        vector<FileEntry*> listaE = lista[x]->getListaEntries();
+        cout<<"Folder: ";
+        lista[x]->imprimirNombre();
         cout<<""<<endl;
-    }
-
-    cout<<""<<endl;
-    cout<<"Bloques de Folder"<<endl;
-    cout<<""<<endl;
-
-    for(int x = 0; x<lista2.size();x++)
-    {
-        BloqueFolder * bf = lista2[x];
-        vector<FileEntry*> listaE = bf->getListaEntries();
-        cout<<""<<endl;
-        for(int x = 0;x<listaE.size();x++)
+        for(int y = 0; y < listaE.size();y++)
         {
-            listaE[x]->imprimirEntry();
-            cout<<""<<endl;
+
+             listaE[y]->imprimirEntry();
+             cout<<""<<endl;
         }
-        cout<<"--------------------------------------"<<endl;
+        cout<<"-------------------------"<<endl;
+        cout<<""<<endl;
 
     }
+
 }
 

@@ -1,9 +1,10 @@
 #include "BloqueFolder.h"
 
-BloqueFolder::BloqueFolder(char * nombre, int numB,int tamB):Bloque(nombre,numB,tamB)
+BloqueFolder::BloqueFolder(char * nombre, int numB,int tamB,Archivo * archivo):Bloque(nombre,numB,tamB)
 {
     siguiente = NULL;
     anterior = NULL;
+    archivo = archivo;
     fe = new FileEntry();
 }
 
@@ -14,6 +15,17 @@ void BloqueFolder::setFileEntry(char* n, int fB, int lB, bool isF, int s)
     fe->setLastBlock(lB);
     fe->setNombre(n);
     fe->setSize(s);
+}
+
+void BloqueFolder::setNombre(char * n)
+{
+    nombre = n;
+}
+
+
+Archivo * BloqueFolder::getArchivo()
+{
+    return archivo;
 }
 
 FileEntry * BloqueFolder::getFileEntry()
@@ -58,7 +70,6 @@ vector<FileEntry*> BloqueFolder::getListaEntries()
     return listaEntries;
 }
 
-
 void BloqueFolder::cargar()
 {
 
@@ -91,4 +102,12 @@ int BloqueFolder::getTamanoBloque()
     return Bloque::getTamanoBloque();
 }
 
+
+void BloqueFolder::imprimirNombre()
+{
+    char * n = nombre;
+    for(int x = 0;x<strlen(n);x++)
+        cout<<n[x];
+    cout<<""<<endl;
+}
 

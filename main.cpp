@@ -19,12 +19,16 @@ int main()
     api->crearFolder(nombre,api->root);
     api->crearArchivo(nombre2,api->root,contenido);
 
-    api->printRoot();
+
 
     vector<BloqueFolder*> lista = api->dv->listaBloqueFolder;
-    api->crearFolder(nombre2,lista[1]);
+    api->crearArchivo(nombre2,lista[1],contenido);
     api->crearArchivo(nombre3,lista[1],contenido);
-    vector<FileEntry*> listaE = lista[1]->getListaEntries();
-    listaE[1]->imprimirEntry();
 
+    api->dir();
+    /*Archivo * arch = api->dv->getArchivo();
+    char * c = arch->leer(4096,11);
+
+    for(int x = 0;x<strlen(c);x++)
+        cout<<c[x];*/
 }

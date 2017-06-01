@@ -16,10 +16,6 @@ Archivo::Archivo(char * d,long size)
 
 int Archivo::getSize()
 {
-    abrir();
-    fseek (file , 0 , SEEK_END);
-    size = ftell (file);
-    rewind (file);
     return size;
 }
 
@@ -49,7 +45,7 @@ void Archivo::cerrar(){
 int Archivo::escribir(char *data, int pos, int longitud)
 {
    int x;
-   abrir();
+   file = fopen(direccion,"w+");
    if(file != NULL){
         fseek( this->file, pos, SEEK_SET );
         x = fwrite(data,sizeof(char), longitud, file);
@@ -65,7 +61,7 @@ char * Archivo::leer(int pos, int longi)
     buffer = (char*) malloc (sizeof(char)*longi);
     if (buffer == NULL) {fputs ("Memory error",stderr); exit (2);}
     result = fread (buffer,1,longi,file);
-    if (result != longi) {fputs ("Reading error",stderr); exit (3);}
+    if (result != longi) {fputs (":(",stderr); exit (3);}
     fclose (file);
     return(buffer);
 }

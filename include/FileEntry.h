@@ -10,11 +10,12 @@ class FileEntry
     public:
         FileEntry();
 
-        void imprimirNombre();
+        char * getNombre();
         int getFirstBLock();
         int getLastBlock();
-        void esFolder();
+        bool getEsFolder();
         int getSize();
+
         void setFirstBlock(int fB);
         void setLastBlock(int lB);
         void setNombre(char * n);

@@ -18,6 +18,7 @@ class API
         Bloque * crearArchivo(char * nombre, BloqueFolder * actual, char * contenido);
         Bloque * crearFolder(char * nombre,BloqueFolder * actual);
 
+        void escribirEntries(FileEntry *fe);
         void addRoot();
         BloqueFolder * root;
         DiscoVirtual * dv;
@@ -25,6 +26,7 @@ class API
     protected:
 
     private:
+        int rootSize;
 };
 
 #endif // API_H

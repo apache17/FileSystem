@@ -1,8 +1,9 @@
 #include "BloqueArchivo.h"
 
-BloqueArchivo::BloqueArchivo(char * nombre, int numB,int tamB):Bloque(nombre,numB,tamB)
+BloqueArchivo::BloqueArchivo(char * nombre, int numB,int tamB,Archivo * archivo):Bloque(nombre,numB,tamB)
 {
     fe = new FileEntry();
+    archivo = archivo;
 }
 
 void BloqueArchivo::setFileEntry(char* n, int fB, int lB, bool isF, int s)
@@ -28,6 +29,11 @@ void BloqueArchivo::initFromChar(char * d)
     pos+=4;
     memcpy(&tamanoBloque, &d[pos], 4);
     pos+=4;
+}
+
+Archivo * BloqueArchivo::getArchivo()
+{
+    return archivo;
 }
 
 char * BloqueArchivo::getNombre()

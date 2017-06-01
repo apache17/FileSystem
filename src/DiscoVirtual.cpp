@@ -80,7 +80,7 @@ vector<FileEntry*> DiscoVirtual::listarArchivosEnRaiz()
 
     int numeroDeBloque = mb->getPrimerBloque();
 
-    BloqueFolder * bf = new BloqueFolder("root",numeroDeBloque,0);
+    BloqueFolder * bf = new BloqueFolder("root",numeroDeBloque,0,getArchivo());
     bf->cargar();
     lista = bf->getListaEntries();
     return lista;
