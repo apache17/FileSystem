@@ -45,7 +45,7 @@ void Archivo::cerrar(){
 int Archivo::escribir(char *data, int pos, int longitud)
 {
    int x;
-   file = fopen(direccion,"w+");
+   file = fopen(direccion,"r+");
    if(file != NULL){
         fseek( this->file, pos, SEEK_SET );
         x = fwrite(data,sizeof(char), longitud, file);

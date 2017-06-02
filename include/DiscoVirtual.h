@@ -19,6 +19,8 @@ public:
 
     int getTamanoArchivo();
     int getTamanoBloque();
+    BloqueFolder * getFolderActual();
+    void setFolderActual(BloqueFolder * bf);
     Archivo * getArchivo();
     MasterBlock * getMasterBlock();
     BloqueFolder * getRaiz();
@@ -34,6 +36,7 @@ private:
     Archivo * archivo;
     MasterBlock * mb;
     BloqueFolder * raiz;
+    BloqueFolder * folderActual;
 };
 
 

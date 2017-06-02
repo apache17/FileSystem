@@ -108,6 +108,8 @@ void BloqueFolder::imprimirNombre()
     char * n = nombre;
     for(int x = 0;x<strlen(n);x++)
         cout<<n[x];
+    cout<<strlen(n);
     cout<<""<<endl;
+
 }
 

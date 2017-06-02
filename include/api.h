@@ -12,6 +12,7 @@ class API
         API();
 
         void dir();
+        void dirFolderActual();
         void printRoot();
         void crearDiscoVirtual();
 
@@ -22,6 +23,7 @@ class API
         void addRoot();
         BloqueFolder * root;
         DiscoVirtual * dv;
+        void abrirFolder(char * n);
 
     protected:
 

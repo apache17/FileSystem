@@ -6,6 +6,16 @@ DiscoVirtual::DiscoVirtual(Archivo * arch,int tamArc,int tamBlo){
     tamBloque = tamBlo;
 }
 
+BloqueFolder * DiscoVirtual::getFolderActual()
+{
+    return folderActual;
+}
+
+void DiscoVirtual::setFolderActual(BloqueFolder * bf)
+{
+    folderActual = bf;
+}
+
 void DiscoVirtual::formatear()
 {
 

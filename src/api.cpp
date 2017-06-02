@@ -5,6 +5,20 @@ API::API()
     rootSize = 0;
 }
 
+void API::abrirFolder(char * nombre)
+{
+   // vector<BloqueFolder*> lista = dv->listaBloqueFolder;
+
+   for(int x = 0;x<dv->listaBloqueFolder.size();x++)
+    {
+        if(dv->listaBloqueFolder.at(x)->getNombre() == nombre)
+        {
+            dv->setFolderActual(dv->listaBloqueFolder.at(x));
+            cout<<"Folder abierto correctamente"<<endl;
+        }
+    }
+}
+
 void API::crearDiscoVirtual()
 {
     char * c = {"Disco Virtual"};
@@ -12,6 +26,7 @@ void API::crearDiscoVirtual()
     dv = new DiscoVirtual(archivo,1048576,4096);
     dv->formatear();
     addRoot();
+    dv->setFolderActual(root);
 }
 
 void API::addRoot(){
@@ -77,12 +92,12 @@ Bloque * API::crearFolder(char * nombre,BloqueFolder * actual)
     dv->getMasterBlock()->setSiguienteDisponible(pos+1);
     BloqueFolder * bf = dynamic_cast<BloqueFolder*>(b);
 
+
     bf->setFileEntry(nombre,pos,pos,true,0);
     actual->agregarFileEntry(bf->getFileEntry());
     escribirEntries(bf->getFileEntry());
-    dv->listaBloqueFolder.push_back(bf);
-
     bf->setNombre(nombre);
+    dv->listaBloqueFolder.push_back(bf);
 
     return bf;
 }
@@ -129,6 +144,21 @@ void API::dir()
         cout<<"-------------------------"<<endl;
         cout<<""<<endl;
     }
+}
 
+void API::dirFolderActual()
+{
+        cout<<""<<endl;
+        cout<<"-------------------------"<<endl;
+        cout<<"Folder Actual: ";
+        dv->getFolderActual()->imprimirNombre();
+        cout<<"Contenido del Folder: ";
+        vector<FileEntry*> lista = dv->getFolderActual()->getListaEntries();
+        for(int y = 0; y < lista.size();y++)
+        {
+             lista[y]->imprimirEntry();
+             cout<<""<<endl;
+        }
+        cout<<"-------------------------"<<endl;
 }
 
