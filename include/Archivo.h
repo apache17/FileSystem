@@ -16,7 +16,7 @@ class Archivo{
         long size;
         FILE * abrir();
         int escribir(char * data, int pos, int longitud);
-        char * leer(int pos, int longi);
+        char * leer(int pos, long longi);
         void cerrar();
         int getSize();
 

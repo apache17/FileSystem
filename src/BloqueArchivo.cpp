@@ -2,6 +2,9 @@
 
 BloqueArchivo::BloqueArchivo(char * nombre, int numB,int tamB,Archivo * archivo):Bloque(nombre,numB,tamB)
 {
+    nombre = nombre;
+    numBloque = numB;
+    tamanoBloque = tamB;
     fe = new FileEntry();
     archivo = archivo;
 }
@@ -38,16 +41,30 @@ Archivo * BloqueArchivo::getArchivo()
 
 char * BloqueArchivo::getNombre()
 {
-    return Bloque::getNombre();
+    return nombre;
 }
 
 int BloqueArchivo::getNumBloque()
 {
-    return Bloque::getNumBloque();
+    return numBloque;
+}
+
+void BloqueArchivo::setNombre(char * nombre)
+{
+    this->nombre = nombre;
+}
+
+char * BloqueArchivo::leer()
+{
+    char * data = archivo->leer(getNumBloque()*4096,fe->getSize());
+    for(int x = 0;x<strlen(data);x++)
+        cout<<data[x];
+    cout<<""<<endl;
+    return data;
 }
 
 int BloqueArchivo::getTamanoBloque()
 {
-    return Bloque::getTamanoBloque();
+    return tamanoBloque;
 }
 

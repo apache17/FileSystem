@@ -5,24 +5,64 @@ API::API()
     rootSize = 0;
 }
 
-void API::abrirFolder(char * nombre)
+int API::leerArchivo(char * nombre,BloqueFolder * bf)
 {
-   // vector<BloqueFolder*> lista = dv->listaBloqueFolder;
-
-   for(int x = 0;x<dv->listaBloqueFolder.size();x++)
+    for(int x = 0;x<dv->listaBloqueArchivo.size();x++)
     {
-        if(dv->listaBloqueFolder.at(x)->getNombre() == nombre)
+        char * n = dv->listaBloqueArchivo.at(x)->getNombre();
+
+        if(strcmp(n,nombre)==0)
         {
-            dv->setFolderActual(dv->listaBloqueFolder.at(x));
-            cout<<"Folder abierto correctamente"<<endl;
+            cout<<"Contenido del Archivo: ";
+            dv->listaBloqueArchivo.at(x)->leer();
+            return 0;
         }
     }
+    cout<<"Archivo no Existe"<<endl;
+    return -1;
+    /*vector<FileEntry*> vector1 = bf->getListaEntries();
+    vector<BloqueArchivo*> vector2 = dv->listaBloqueArchivo;
+    for(int x = 0; x<vector1.size();x++)
+    {
+        if(vector1[x]->getNombre()==nombre)
+        {
+            for(int y = 0;y<vector2.size();y++)
+            {
+                if(vector2[y]->getNombre()==nombre)
+                {
+                    char * data = vector2[y]->leer();
+                    cout<<"Archivo leido correctamente"<<endl;
+                }
+            }
+        }
+    }*/
+}
+
+
+int API::abrirFolder(char * nombre)
+{
+   for(int x = 0;x<dv->listaBloqueFolder.size();x++)
+    {
+        char * n = dv->listaBloqueFolder.at(x)->getNombre();
+
+        if(strcmp(n,nombre)==0)
+        {
+            dv->setFolderActual(dv->listaBloqueFolder.at(x));
+            cout<<"Folder Actual: ";
+            dv->listaBloqueFolder.at(x)->imprimirNombre();
+            return 0;
+        }
+    }
+    cout<<"Folder no Existe"<<endl;
+    return -1;
 }
 
 void API::crearDiscoVirtual()
 {
-    char * c = {"Disco Virtual"};
+    char * c = {"DiscoVirtual.txt"};
     Archivo * archivo = new Archivo(c,1048576);
+
+
     dv = new DiscoVirtual(archivo,1048576,4096);
     dv->formatear();
     addRoot();
@@ -75,6 +115,7 @@ Bloque * API::crearArchivo(char * nombre, BloqueFolder * actual, char * contenid
         actual->agregarFileEntry(ba->getFileEntry());
     }
 
+    ba->setNombre(nombre);
     dv->listaBloqueArchivo.push_back(ba);
     escribirEntries(ba->getFileEntry());
     return ba;

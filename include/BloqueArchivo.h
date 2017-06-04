@@ -12,11 +12,13 @@ class BloqueArchivo:public Bloque
         int getTamanoBloque();
         int getNumBloque();
         char * getNombre();
+        void setNombre(char * nombre);
         FileEntry * getFileEntry();
         void setFileEntry(char* n, int fB, int lB, bool isF, int s);
         bool getEscritura();
         void setEscritura(bool escritura);
         Archivo * getArchivo();
+        char * leer();
 
     private:
         void initFromChar(char * d);
@@ -25,8 +27,6 @@ class BloqueArchivo:public Bloque
         char * nombre;
         FileEntry *fe;
         Archivo * archivo;
-
-
 };
 
 #endif // BLOQUEARCHIVO_H

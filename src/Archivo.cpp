@@ -7,7 +7,7 @@ Archivo::Archivo(char * d,long size)
     size = size;
 
     if(strlen(this->direccion)> 0) {
-        file = fopen(this->direccion,"w");
+        file = fopen(this->direccion,"r+");
         fseek(file,size,SEEK_SET);
         fputc('\0',file);
         fclose(file);
@@ -53,16 +53,13 @@ int Archivo::escribir(char *data, int pos, int longitud)
    return x;
 }
 
-char * Archivo::leer(int pos, int longi)
+char * Archivo::leer(int pos, long longi)
 {
-    file = fopen(direccion,"r");
     char * buffer;
-    int result;
+    file = fopen (direccion,"r");
     buffer = (char*) malloc (sizeof(char)*longi);
-    if (buffer == NULL) {fputs ("Memory error",stderr); exit (2);}
-    result = fread (buffer,1,longi,file);
-    if (result != longi) {fputs (":(",stderr); exit (3);}
-    fclose (file);
-    return(buffer);
+    fseek(file,pos,SEEK_SET);
+    fread (buffer,1,longi,file);
+    return buffer;
 }
 

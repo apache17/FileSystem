@@ -1,33 +1,30 @@
 # depslib dependency file v1.0
-1496356244 source:c:\users\boris\desktop\estructura datos ii\filesystem\main.cpp
+1496555841 source:c:\users\boris\desktop\estructura datos ii\filesystem\main.cpp
 	<iostream>
 	"api.h"
-	"DiscoVirtual.h"
-	"MasterBlock.h"
-	"Archivo.h"
-	"masterblock.h"
-
-1496335655 source:c:\users\boris\desktop\estructura datos ii\filesystem\src\archivo.cpp
 	"Archivo.h"
 
-1496291188 c:\users\boris\desktop\estructura datos ii\filesystem\include\archivo.h
+1496556021 source:c:\users\boris\desktop\estructura datos ii\filesystem\src\archivo.cpp
+	"Archivo.h"
+
+1496551342 c:\users\boris\desktop\estructura datos ii\filesystem\include\archivo.h
 	<stdlib.h>
 	<stdio.h>
 	<iostream>
 	<string.h>
 
-1496280885 source:c:\users\boris\desktop\estructura datos ii\filesystem\src\bloquearchivo.cpp
+1496541883 source:c:\users\boris\desktop\estructura datos ii\filesystem\src\bloquearchivo.cpp
 	"BloqueArchivo.h"
 
-1496280885 c:\users\boris\desktop\estructura datos ii\filesystem\include\bloquearchivo.h
+1496541489 c:\users\boris\desktop\estructura datos ii\filesystem\include\bloquearchivo.h
 	<stdio.h>
 	"bloque.h"
 	"FileEntry.h"
 
-1496356065 source:c:\users\boris\desktop\estructura datos ii\filesystem\src\bloquefolder.cpp
+1496536842 source:c:\users\boris\desktop\estructura datos ii\filesystem\src\bloquefolder.cpp
 	"BloqueFolder.h"
 
-1496355119 c:\users\boris\desktop\estructura datos ii\filesystem\include\bloquefolder.h
+1496530462 c:\users\boris\desktop\estructura datos ii\filesystem\include\bloquefolder.h
 	<vector>
 	<stdio.h>
 	<iostream>
@@ -71,10 +68,10 @@
 1496202206 source:c:\users\boris\desktop\estructura datos ii\filesystem\src\bloque.cpp
 	"bloque.h"
 
-1496356223 source:c:\users\boris\desktop\estructura datos ii\filesystem\src\api.cpp
+1496556209 source:c:\users\boris\desktop\estructura datos ii\filesystem\src\api.cpp
 	"api.h"
 
-1496356223 c:\users\boris\desktop\estructura datos ii\filesystem\include\api.h
+1496538489 c:\users\boris\desktop\estructura datos ii\filesystem\include\api.h
 	"MasterBlock.h"
 	"BloqueArchivo.h"
 	"BloqueFolder.h"

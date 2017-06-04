@@ -23,7 +23,8 @@ class API
         void addRoot();
         BloqueFolder * root;
         DiscoVirtual * dv;
-        void abrirFolder(char * n);
+        int abrirFolder(char * n);
+        int leerArchivo(char * n,BloqueFolder * bf);
 
     protected:
 

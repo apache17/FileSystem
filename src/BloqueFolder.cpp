@@ -89,17 +89,17 @@ void BloqueFolder::initFromChar(char * d)
 
 char * BloqueFolder::getNombre()
 {
-    return Bloque::getNombre();
+    return nombre;
 }
 
 int BloqueFolder::getNumBloque()
 {
-    return Bloque::getNumBloque();
+    return numBloque;
 }
 
 int BloqueFolder::getTamanoBloque()
 {
-    return Bloque::getTamanoBloque();
+    return tamanoBloque;
 }
 
 
@@ -108,7 +108,6 @@ void BloqueFolder::imprimirNombre()
     char * n = nombre;
     for(int x = 0;x<strlen(n);x++)
         cout<<n[x];
-    cout<<strlen(n);
     cout<<""<<endl;
 
 }
