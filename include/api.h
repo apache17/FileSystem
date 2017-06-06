@@ -25,7 +25,7 @@ class API
         DiscoVirtual * dv;
         int abrirFolder(char * n);
         int leerArchivo(char * n,BloqueFolder * bf);
-        int initFromChar();
+        int initFromChar(BloqueFolder * actual);
         void guardarEntries();
 
     protected:

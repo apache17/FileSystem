@@ -78,12 +78,12 @@
 	"archivo.h"
 	"DiscoVirtual.h"
 
-1496735030 source:c:\users\boris\documents\github\filesystem\main.cpp
+1496769170 source:c:\users\boris\documents\github\filesystem\main.cpp
 	<iostream>
 	"api.h"
 	"Archivo.h"
 
-1496732834 c:\users\boris\documents\github\filesystem\include\api.h
+1496735746 c:\users\boris\documents\github\filesystem\include\api.h
 	"MasterBlock.h"
 	"BloqueArchivo.h"
 	"BloqueFolder.h"
@@ -104,7 +104,7 @@
 1496716894 c:\users\boris\documents\github\filesystem\include\bloque.h
 	"Archivo.h"
 
-1496717380 c:\users\boris\documents\github\filesystem\include\archivo.h
+1496760907 c:\users\boris\documents\github\filesystem\include\archivo.h
 	<stdlib.h>
 	<stdio.h>
 	<iostream>
@@ -133,10 +133,10 @@
 	"BloqueFolder.h"
 	"BloqueArchivo.h"
 
-1496735447 source:c:\users\boris\documents\github\filesystem\src\api.cpp
+1496769477 source:c:\users\boris\documents\github\filesystem\src\api.cpp
 	"api.h"
 
-1496735103 source:c:\users\boris\documents\github\filesystem\src\archivo.cpp
+1496760923 source:c:\users\boris\documents\github\filesystem\src\archivo.cpp
 	"Archivo.h"
 
 1496716894 source:c:\users\boris\documents\github\filesystem\src\bloque.cpp
@@ -145,7 +145,7 @@
 1496725229 source:c:\users\boris\documents\github\filesystem\src\bloquearchivo.cpp
 	"BloqueArchivo.h"
 
-1496734891 source:c:\users\boris\documents\github\filesystem\src\bloquefolder.cpp
+1496756609 source:c:\users\boris\documents\github\filesystem\src\bloquefolder.cpp
 	"BloqueFolder.h"
 
 1496716894 source:c:\users\boris\documents\github\filesystem\src\discovirtual.cpp

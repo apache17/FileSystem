@@ -18,7 +18,7 @@ int main()
 
     int opcion2;
     api->crearDiscoVirtual();
-    api->initFromChar();
+    api->initFromChar(api->dv->getFolderActual());
 
     do
     {
@@ -29,7 +29,8 @@ int main()
         cout<<"4- Listar Archivos de la carpeta actual"<<endl;
         cout<<"5- Listar todos los Archivos"<<endl;
         cout<<"6- Abrir un Folder"<<endl;
-        cout<<"7- Salir"<<endl;
+        cout<<"7- Formatear"<<endl;
+        cout<<"8- Salir"<<endl;
         cout<<"Elija una opcion: ";
         cin>>opcion2;
 
@@ -94,8 +95,15 @@ int main()
             memcpy(&nombreChar[0], nombre.c_str(),nombre.length());
             api->abrirFolder(nombreChar);
         }
+        else if(opcion2 == 7)
+        {
+            api->dv->getArchivo()->formatear();
+            api->dv->listaBloqueArchivo.clear();
+            api->dv->listaBloqueFolder.clear();
+            api->crearDiscoVirtual();
+        }
 
 
 
-    }while(opcion2 !=7);
+    }while(opcion2 !=8);
 }

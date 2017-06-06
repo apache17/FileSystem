@@ -14,6 +14,14 @@ void Archivo::abrir(){
     file = fopen(nombre, "r+");
 }
 
+void Archivo::formatear()
+{
+    file = fopen(this->nombre,"w");
+    fseek(file,4096*256,SEEK_SET);
+    fputc('\0',file);
+    fclose(file);
+}
+
 char * Archivo::leer(int pos, int longitud){
     file = fopen("DiscoVirtual.txt","r+");
     fseek(file, pos, SEEK_SET);

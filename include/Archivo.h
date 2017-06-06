@@ -15,6 +15,7 @@ class Archivo{
         void escribir(char * data,int pos,int longitud);
         void cerrar();
         void setTamano(long pos);
+        void formatear();
 
     private:
         FILE * file;

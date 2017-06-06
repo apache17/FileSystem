@@ -7,12 +7,15 @@ API::API()
 
 
 
-int API::initFromChar(){
-
+int API::initFromChar(BloqueFolder * actual){
     char * nombre = {"DiscoVirtual.txt"};
     Archivo * arch = new Archivo(nombre,256*4096);
 
-    char * data = arch->leer(4096,4096*3);
+
+    int pos1 = actual->getFileEntry()->getFirstBLock()*4096;
+    int lon = (actual->getFileEntry()->getLastBlock()-actual->getFileEntry()->getFirstBLock()+1)*4096;
+    char * data = arch->leer(pos1,lon);
+
     int pos = 0;
     int cant;
     memcpy(&cant, &(data[pos]), 4);
@@ -42,12 +45,13 @@ int API::initFromChar(){
 
         if(esFolder == true)
         {
-            crearFolder(nombre2,dv->getFolderActual(),1);
+            BloqueFolder * bf = crearFolder(nombre2,actual,1);
+            //return initFromChar(bf);
         }
         else
         {
             char * d = arch->leer(firstBlock*4096,size);
-            crearArchivo(nombre2,dv->getFolderActual(),d);
+            crearArchivo(nombre2,actual,d);
         }
     }
     return 0;
@@ -57,8 +61,6 @@ int API::leerArchivo(char * nombre,BloqueFolder * bf)
 {
     for(int x = 0;x<dv->listaBloqueArchivo.size();x++)
     {
-
-
             cout<<"Contenido del Archivo: ";
             dv->listaBloqueArchivo.at(x)->leer();
 
@@ -82,7 +84,7 @@ int API::abrirFolder(char * nombre)
             return 0;
         }
     }
-    cout<<"Folder no Existe"<<endl;
+    cout<<"No Existe"<<endl;
     return -1;
 }
 
@@ -105,9 +107,7 @@ void API::addRoot(){
     bloque->setFileEntry(ra,1,3,true,0);
     bloque->setNombre(ra);
     dv->listaBloqueFolder.push_back(bloque);
-
     this->root = bloque;
-
 }
 
 BloqueArchivo * API::crearArchivo(char * nombre, BloqueFolder * actual, char * contenido)
@@ -158,6 +158,7 @@ BloqueFolder * API::crearFolder(char * nombre,BloqueFolder * actual,int x)
     dv->listaBloqueFolder.push_back(bf);
     bf->setNombre(nombre);
     actual->setCantArchivos(actual);
+    actual->setCantArchivos(bf);
     return bf;
 }
 
