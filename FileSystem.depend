@@ -78,25 +78,25 @@
 	"archivo.h"
 	"DiscoVirtual.h"
 
-1496718762 source:c:\users\boris\documents\github\filesystem\main.cpp
+1496735030 source:c:\users\boris\documents\github\filesystem\main.cpp
 	<iostream>
 	"api.h"
 	"Archivo.h"
 
-1496716894 c:\users\boris\documents\github\filesystem\include\api.h
+1496732834 c:\users\boris\documents\github\filesystem\include\api.h
 	"MasterBlock.h"
 	"BloqueArchivo.h"
 	"BloqueFolder.h"
 	"archivo.h"
 	"DiscoVirtual.h"
 
-1496716894 c:\users\boris\documents\github\filesystem\include\masterblock.h
+1496734443 c:\users\boris\documents\github\filesystem\include\masterblock.h
 	"BloqueArchivo.h"
 	"Archivo.h"
 	<stdio.h>
 	<string.h>
 
-1496716894 c:\users\boris\documents\github\filesystem\include\bloquearchivo.h
+1496719832 c:\users\boris\documents\github\filesystem\include\bloquearchivo.h
 	<stdio.h>
 	"bloque.h"
 	"FileEntry.h"
@@ -115,7 +115,7 @@
 	<string.h>
 	<iostream>
 
-1496716894 c:\users\boris\documents\github\filesystem\include\bloquefolder.h
+1496734891 c:\users\boris\documents\github\filesystem\include\bloquefolder.h
 	<vector>
 	<stdio.h>
 	<iostream>
@@ -133,19 +133,19 @@
 	"BloqueFolder.h"
 	"BloqueArchivo.h"
 
-1496717840 source:c:\users\boris\documents\github\filesystem\src\api.cpp
+1496735447 source:c:\users\boris\documents\github\filesystem\src\api.cpp
 	"api.h"
 
-1496717380 source:c:\users\boris\documents\github\filesystem\src\archivo.cpp
+1496735103 source:c:\users\boris\documents\github\filesystem\src\archivo.cpp
 	"Archivo.h"
 
 1496716894 source:c:\users\boris\documents\github\filesystem\src\bloque.cpp
 	"bloque.h"
 
-1496716894 source:c:\users\boris\documents\github\filesystem\src\bloquearchivo.cpp
+1496725229 source:c:\users\boris\documents\github\filesystem\src\bloquearchivo.cpp
 	"BloqueArchivo.h"
 
-1496716894 source:c:\users\boris\documents\github\filesystem\src\bloquefolder.cpp
+1496734891 source:c:\users\boris\documents\github\filesystem\src\bloquefolder.cpp
 	"BloqueFolder.h"
 
 1496716894 source:c:\users\boris\documents\github\filesystem\src\discovirtual.cpp

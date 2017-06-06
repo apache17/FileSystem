@@ -33,7 +33,9 @@ public:
     void setSiguiente(BloqueFolder * bf);
     void setAnterior(BloqueFolder * bf);
     Archivo * getArchivo();
-
+    char * nombre;
+    int getCantArchivos();
+    void setCantArchivos(BloqueFolder * actual);
 
 private:
     void initFromChar(char * d);
@@ -41,11 +43,11 @@ private:
     vector<FileEntry*> listaEntries;
     int tamanoBloque;
     int numBloque;
-    char * nombre;
+
     BloqueFolder * siguiente;
     BloqueFolder * anterior;
     FileEntry *fe;
-
+    int cantArchivos;
 };
 
 #endif // BLOQUEFOLDER_H

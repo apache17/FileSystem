@@ -41,7 +41,6 @@
 		<Unit filename="include/FileEntry.h" />
 		<Unit filename="include/MasterBlock.h" />
 		<Unit filename="include/api.h" />
-		<Unit filename="include/bloque.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/Archivo.cpp" />
 		<Unit filename="src/BloqueArchivo.cpp" />
@@ -50,7 +49,6 @@
 		<Unit filename="src/FileEntry.cpp" />
 		<Unit filename="src/MasterBlock.cpp" />
 		<Unit filename="src/api.cpp" />
-		<Unit filename="src/bloque.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />

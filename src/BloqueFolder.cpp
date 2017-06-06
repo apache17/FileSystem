@@ -9,6 +9,7 @@ BloqueFolder::BloqueFolder(char * nombre, int numB,int tamB,Archivo * archivo)
     anterior = NULL;
     archivo = archivo;
     fe = new FileEntry();
+    cantArchivos = 0;
 }
 
 void BloqueFolder::setFileEntry(char* n, int fB, int lB, bool isF, int s)
@@ -88,7 +89,17 @@ void BloqueFolder::initFromChar(char * d)
     memcpy(&tamanoBloque, &d[pos], 4);
     pos+=4;
 }
+void BloqueFolder::setCantArchivos(BloqueFolder * actual)
+{
+    char * nombre = {"DiscoVirtual.txt"};
+    Archivo * arch = new Archivo(nombre,256*4096);
 
+    cantArchivos+=1;
+    char * cant = new char[4];
+    memcpy(&cant[0], &cantArchivos, 4);
+    arch->abrir();
+    arch->escribir(cant,4096*actual->getFileEntry()->getFirstBLock(),4);
+}
 
 char * BloqueFolder::getNombre()
 {

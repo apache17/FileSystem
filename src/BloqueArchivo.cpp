@@ -56,11 +56,13 @@ void BloqueArchivo::setNombre(char * nombre)
 
 char * BloqueArchivo::leer()
 {
-    char * data = archivo->leer(getNumBloque()*4096,fe->getSize());
-    for(int x = 0;x<strlen(data);x++)
-        cout<<data[x];
+    char * nombre = {"DiscoVirtual.txt"};
+    Archivo * arch = new Archivo(nombre,256*4096);
+    char * a = arch->leer(getNumBloque()*4096,fe->getSize());
+    for(int x =0; x<strlen(a);x++)
+        cout<<a[x];
     cout<<""<<endl;
-    return data;
+    return a;
 }
 
 int BloqueArchivo::getTamanoBloque()

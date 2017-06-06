@@ -13,6 +13,7 @@ class MasterBlock{
         int getCantBloques();
         int getPrimerBloque();
         int getSigDisponible();
+
         void setSiguienteDisponible(int x);
         void cargar();
         void guardar();
@@ -26,6 +27,7 @@ class MasterBlock{
         int cantBloques;
         int primero;
         int sigDisponible;
+
 };
 
 #endif // MASTERBLOCK_H

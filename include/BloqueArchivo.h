@@ -19,12 +19,13 @@ class BloqueArchivo
         void setEscritura(bool escritura);
         Archivo * getArchivo();
         char * leer();
+        char * nombre;
 
     private:
         void initFromChar(char * d);
         int tamanoBloque;
         int numBloque;
-        char * nombre;
+
         FileEntry *fe;
         Archivo * archivo;
 };

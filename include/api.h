@@ -17,14 +17,16 @@ class API
         void crearDiscoVirtual();
 
         BloqueArchivo * crearArchivo(char * nombre, BloqueFolder * actual, char * contenido);
-        BloqueFolder * crearFolder(char * nombre,BloqueFolder * actual);
+        BloqueFolder * crearFolder(char * nombre,BloqueFolder * actual,int x);
 
-        void escribirEntries(FileEntry *fe);
+        void escribirEntries(FileEntry *fe,BloqueFolder * actual);
         void addRoot();
         BloqueFolder * root;
         DiscoVirtual * dv;
         int abrirFolder(char * n);
         int leerArchivo(char * n,BloqueFolder * bf);
+        int initFromChar();
+        void guardarEntries();
 
     protected:
 
