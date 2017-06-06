@@ -16,8 +16,8 @@ class API
         void printRoot();
         void crearDiscoVirtual();
 
-        Bloque * crearArchivo(char * nombre, BloqueFolder * actual, char * contenido);
-        Bloque * crearFolder(char * nombre,BloqueFolder * actual);
+        BloqueArchivo * crearArchivo(char * nombre, BloqueFolder * actual, char * contenido);
+        BloqueFolder * crearFolder(char * nombre,BloqueFolder * actual);
 
         void escribirEntries(FileEntry *fe);
         void addRoot();

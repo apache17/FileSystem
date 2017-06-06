@@ -31,14 +31,9 @@ void DiscoVirtual::formatear()
 
 }
 
-Bloque * DiscoVirtual::asignarSiguienteBloque(int numeroBloque)
+BloqueFolder * DiscoVirtual::asignarSiguienteBloque(int numeroBloque)
 {
-    string str = "Bloque";
-    char *cstr = new char[str.length() + 1];
-    strcpy(cstr, str.c_str());
-    Bloque * bloque = new Bloque(cstr,numeroBloque,0);
-    listaBloques.push_back(bloque);
-    return bloque;
+    return NULL;
 }
 
 void DiscoVirtual::cargar(){
@@ -77,10 +72,6 @@ MasterBlock * DiscoVirtual::getMasterBlock()
     return mb;
 }
 
-vector<Bloque*> DiscoVirtual::getListaBloques()
-{
-    return listaBloques;
-}
 
 vector<FileEntry*> DiscoVirtual::listarArchivosEnRaiz()
 {

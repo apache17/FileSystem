@@ -1,10 +1,10 @@
 #include "BloqueArchivo.h"
 
-BloqueArchivo::BloqueArchivo(char * nombre, int numB,int tamB,Archivo * archivo):Bloque(nombre,numB,tamB)
+BloqueArchivo::BloqueArchivo(char * nombre, int numB,int tamB,Archivo * archivo)
 {
-    nombre = nombre;
-    numBloque = numB;
-    tamanoBloque = tamB;
+    this->nombre = nombre;
+    this->numBloque = numB;
+    this->tamanoBloque = tamB;
     fe = new FileEntry();
     archivo = archivo;
 }

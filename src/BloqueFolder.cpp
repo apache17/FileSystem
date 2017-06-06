@@ -1,7 +1,10 @@
 #include "BloqueFolder.h"
 
-BloqueFolder::BloqueFolder(char * nombre, int numB,int tamB,Archivo * archivo):Bloque(nombre,numB,tamB)
+BloqueFolder::BloqueFolder(char * nombre, int numB,int tamB,Archivo * archivo)
 {
+    this->nombre = nombre;
+    this->numBloque = numB;
+    this->tamanoBloque = tamB;
     siguiente = NULL;
     anterior = NULL;
     archivo = archivo;

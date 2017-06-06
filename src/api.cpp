@@ -11,7 +11,12 @@ int API::leerArchivo(char * nombre,BloqueFolder * bf)
     {
         char * n = dv->listaBloqueArchivo.at(x)->getNombre();
 
-        if(strcmp(n,nombre)==0)
+        for(int x = 0;x<strlen(n);x++){
+            cout<<n[x];
+            cout<<nombre[x];
+        }
+
+        if(n == nombre)
         {
             cout<<"Contenido del Archivo: ";
             dv->listaBloqueArchivo.at(x)->leer();
@@ -20,22 +25,6 @@ int API::leerArchivo(char * nombre,BloqueFolder * bf)
     }
     cout<<"Archivo no Existe"<<endl;
     return -1;
-    /*vector<FileEntry*> vector1 = bf->getListaEntries();
-    vector<BloqueArchivo*> vector2 = dv->listaBloqueArchivo;
-    for(int x = 0; x<vector1.size();x++)
-    {
-        if(vector1[x]->getNombre()==nombre)
-        {
-            for(int y = 0;y<vector2.size();y++)
-            {
-                if(vector2[y]->getNombre()==nombre)
-                {
-                    char * data = vector2[y]->leer();
-                    cout<<"Archivo leido correctamente"<<endl;
-                }
-            }
-        }
-    }*/
 }
 
 
@@ -44,6 +33,11 @@ int API::abrirFolder(char * nombre)
    for(int x = 0;x<dv->listaBloqueFolder.size();x++)
     {
         char * n = dv->listaBloqueFolder.at(x)->getNombre();
+        for(int x = 0;x<strlen(n);x++){
+            if(n[x] == nombre[x])
+                cout<<"X";
+        }
+
 
         if(strcmp(n,nombre)==0)
         {
@@ -61,8 +55,6 @@ void API::crearDiscoVirtual()
 {
     char * c = {"DiscoVirtual.txt"};
     Archivo * archivo = new Archivo(c,1048576);
-
-
     dv = new DiscoVirtual(archivo,1048576,4096);
     dv->formatear();
     addRoot();
@@ -72,28 +64,21 @@ void API::crearDiscoVirtual()
 void API::addRoot(){
     int pos = 1;
     char * ra = {"Raiz"};
-    vector<Bloque*> lista = dv->getListaBloques();
-    Bloque * bloque = lista[0];
-    bloque = new BloqueFolder(ra,1,0,dv->getArchivo());
-    BloqueFolder * nRoot = dynamic_cast<BloqueFolder*>(bloque);
+    BloqueFolder * bloque = new BloqueFolder(ra,1,0,dv->getArchivo());
     dv->getMasterBlock()->setSiguienteDisponible(pos+3);
-    dv->listaBloqueFolder.push_back(nRoot);
-    nRoot->setNombre(ra);
-    this->root = nRoot;
+    dv->listaBloqueFolder.push_back(bloque);
+    this->root = bloque;
 }
 
-Bloque * API::crearArchivo(char * nombre, BloqueFolder * actual, char * contenido)
+BloqueArchivo * API::crearArchivo(char * nombre, BloqueFolder * actual, char * contenido)
 {
     Archivo * archivo = dv->getArchivo();
     archivo->abrir();
     int pos = dv->getMasterBlock()->getSigDisponible();
-    vector<Bloque*> lista = dv->getListaBloques();
-    Bloque * b = lista[pos-1];
 
-    b = new BloqueArchivo(nombre,pos,strlen(contenido),dv->getArchivo());
+
+    BloqueArchivo * ba = new BloqueArchivo(nombre,pos,strlen(contenido),dv->getArchivo());
     actual->getFileEntry()->setSize(strlen(contenido));
-
-    BloqueArchivo * ba = dynamic_cast<BloqueArchivo*>(b);
     int size = strlen(contenido)/4096;
 
     if(size<1)
@@ -115,29 +100,23 @@ Bloque * API::crearArchivo(char * nombre, BloqueFolder * actual, char * contenid
         actual->agregarFileEntry(ba->getFileEntry());
     }
 
-    ba->setNombre(nombre);
     dv->listaBloqueArchivo.push_back(ba);
     escribirEntries(ba->getFileEntry());
     return ba;
 }
 
-Bloque * API::crearFolder(char * nombre,BloqueFolder * actual)
+BloqueFolder * API::crearFolder(char * nombre,BloqueFolder * actual)
 {
     Archivo * archivo = dv->getArchivo();
     archivo->abrir();
     int pos = dv->getMasterBlock()->getSigDisponible();
-    vector<Bloque*> lista = dv->getListaBloques();
-    Bloque * b = lista[pos-1];
 
-    b = new BloqueFolder(nombre,pos,0,archivo);
+    BloqueFolder * bf = new BloqueFolder(nombre,pos,0,archivo);
     dv->getMasterBlock()->setSiguienteDisponible(pos+1);
-    BloqueFolder * bf = dynamic_cast<BloqueFolder*>(b);
-
 
     bf->setFileEntry(nombre,pos,pos,true,0);
     actual->agregarFileEntry(bf->getFileEntry());
     escribirEntries(bf->getFileEntry());
-    bf->setNombre(nombre);
     dv->listaBloqueFolder.push_back(bf);
 
     return bf;

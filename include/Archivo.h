@@ -9,16 +9,16 @@ using namespace std;
 
 class Archivo{
     public:
-        Archivo(char* d,long size);
-        char * direccion;
-        FILE* file;
-        bool abierto;
-        long size;
-        FILE * abrir();
-        int escribir(char * data, int pos, int longitud);
-        char * leer(int pos, long longi);
+        Archivo(char * nombre, int size);
+        void abrir();
+        char * leer(int pos, int longitud);
+        void escribir(char * data,int pos,int longitud);
         void cerrar();
-        int getSize();
+        void setTamano(int pos);
+
+    private:
+        FILE * file;
+        char * nombre;
 
 };
 #endif // ARCHIVO_H

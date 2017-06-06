@@ -5,7 +5,7 @@
 #include "FileEntry.h"
 using namespace std;
 
-class BloqueArchivo:public Bloque
+class BloqueArchivo
 {
     public:
         BloqueArchivo(char * nombre, int numB, int tamB,Archivo * archivo);
