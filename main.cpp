@@ -6,6 +6,16 @@ using namespace std;
 
 int main()
 {
+    char * nombre = {"DiscoVirtual.txt"};
+    char * nombre2 = {"Mierdaaaaaaaaaaaaaaaaaa"};
+    Archivo * arch = new Archivo(nombre,256*4096);
+    arch->abrir();
+    arch->escribir(nombre2,20*4096,strlen(nombre2));
+    char * a = arch->leer(4096*20,strlen(nombre2));
+    for(int x =0; x<strlen(a);x++)
+        cout<<a[x];
+
+    /*
     API * api = new API();
 
     int opcion;
@@ -98,5 +108,5 @@ int main()
             }
 
         }while(opcion2 !=7);
-    }
+    }*/
 }

@@ -9,12 +9,12 @@ using namespace std;
 
 class Archivo{
     public:
-        Archivo(char * nombre, int size);
+        Archivo(char * nombre, long size);
         void abrir();
         char * leer(int pos, int longitud);
         void escribir(char * data,int pos,int longitud);
         void cerrar();
-        void setTamano(int pos);
+        void setTamano(long pos);
 
     private:
         FILE * file;

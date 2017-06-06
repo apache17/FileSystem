@@ -1,6 +1,6 @@
 #include "Archivo.h"
 
-Archivo::Archivo(char * nombre,int size)
+Archivo::Archivo(char * nombre,long size)
 {
     this->nombre = nombre;
     setTamano(size);
@@ -26,7 +26,7 @@ void Archivo::escribir(char * data,int pos,int longitud){
     cerrar();
 }
 
-void Archivo::setTamano(int pos){
+void Archivo::setTamano(long pos){
     abrir();
     fseek(file, pos, SEEK_SET);
     fputc('\0', file);

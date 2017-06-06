@@ -11,12 +11,7 @@ int API::leerArchivo(char * nombre,BloqueFolder * bf)
     {
         char * n = dv->listaBloqueArchivo.at(x)->getNombre();
 
-        for(int x = 0;x<strlen(n);x++){
-            cout<<n[x];
-            cout<<nombre[x];
-        }
-
-        if(n == nombre)
+        if(strcmp(n,nombre)==0)
         {
             cout<<"Contenido del Archivo: ";
             dv->listaBloqueArchivo.at(x)->leer();
@@ -27,21 +22,17 @@ int API::leerArchivo(char * nombre,BloqueFolder * bf)
     return -1;
 }
 
-
 int API::abrirFolder(char * nombre)
 {
    for(int x = 0;x<dv->listaBloqueFolder.size();x++)
     {
-        char * n = dv->listaBloqueFolder.at(x)->getNombre();
-        for(int x = 0;x<strlen(n);x++){
-            if(n[x] == nombre[x])
-                cout<<"X";
-        }
 
+        char * n = dv->listaBloqueFolder.at(x)->getNombre();
 
         if(strcmp(n,nombre)==0)
         {
             dv->setFolderActual(dv->listaBloqueFolder.at(x));
+            cout<<"Folder abierto correctamente"<<endl;
             cout<<"Folder Actual: ";
             dv->listaBloqueFolder.at(x)->imprimirNombre();
             return 0;
@@ -59,6 +50,7 @@ void API::crearDiscoVirtual()
     dv->formatear();
     addRoot();
     dv->setFolderActual(root);
+
 }
 
 void API::addRoot(){
@@ -67,7 +59,9 @@ void API::addRoot(){
     BloqueFolder * bloque = new BloqueFolder(ra,1,0,dv->getArchivo());
     dv->getMasterBlock()->setSiguienteDisponible(pos+3);
     dv->listaBloqueFolder.push_back(bloque);
+    bloque->setNombre(ra);
     this->root = bloque;
+
 }
 
 BloqueArchivo * API::crearArchivo(char * nombre, BloqueFolder * actual, char * contenido)
@@ -99,7 +93,7 @@ BloqueArchivo * API::crearArchivo(char * nombre, BloqueFolder * actual, char * c
         ba->setFileEntry(nombre,pos,pos+size,false,strlen(contenido));
         actual->agregarFileEntry(ba->getFileEntry());
     }
-
+    ba->setNombre(nombre);
     dv->listaBloqueArchivo.push_back(ba);
     escribirEntries(ba->getFileEntry());
     return ba;
@@ -118,7 +112,7 @@ BloqueFolder * API::crearFolder(char * nombre,BloqueFolder * actual)
     actual->agregarFileEntry(bf->getFileEntry());
     escribirEntries(bf->getFileEntry());
     dv->listaBloqueFolder.push_back(bf);
-
+    bf->setNombre(nombre);
     return bf;
 }
 
